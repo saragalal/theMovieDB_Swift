@@ -1,14 +1,15 @@
 //
-//  DetailVC.swift
+//  DetailsViewController.swift
 //  TheMovieDb
 //
-//  Created by Lost Star on 8/30/19.
+//  Created by Lost Star on 8/31/19.
 //  Copyright © 2019 Sara Galal. All rights reserved.
 //
 
 import UIKit
 
-class DetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DetailsViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource {
+    
     var baseUrl = "https://api.themoviedb.org/3/person/"
     var imagesUrl : [String] = []
     
@@ -18,8 +19,8 @@ class DetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     var typeName: UILabel!
     var overview: UITextView!
     
-     var nameLb: UILabel!
-     var profImage: UIImageView!
+    var nameLb: UILabel!
+    var profImage: UIImageView!
     var profile: UIImage!
     var selctedImage: UIImage!
     
@@ -43,7 +44,7 @@ class DetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collCell", for: indexPath)
         
-        imageView = cell.viewWithTag(1) as? UIImageView
+        //imageView = cell.viewWithTag(1) as? UIImageView
         
         if imagesUrl.count != 0 {
             
@@ -55,11 +56,14 @@ class DetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
                 
                 if error == nil && data != nil{
                     let loadedImage = UIImage(data: data!)
-                    self.profile = loadedImage
                     DispatchQueue.main.async {
+                        let thisCell = self.collectionView.cellForItem(at: indexPath)
+                        
+                        if (thisCell) != nil {
+                           self.imageView = thisCell?.viewWithTag(1) as? UIImageView
                         self.imageView.image = loadedImage
                     }
-                    
+                    }
                 }
             }
             task.resume()
@@ -70,40 +74,41 @@ class DetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collCell", for: indexPath)
+       let cell = self.collectionView.cellForItem(at: indexPath)
         
-        let imgview = cell.viewWithTag(1) as? UIImageView
+        let imgview = cell?.viewWithTag(1) as? UIImageView
         
         selctedImage = imgview?.image
         
         
-   performSegue(withIdentifier: "saveSegue", sender: self)
+        performSegue(withIdentifier: "saveSegue", sender: self)
     }
     
     @IBAction func slectProfile(_ sender: Any) {
-       
+        
         selctedImage = profile
         
         performSegue(withIdentifier: "saveSegue", sender: self)
-    
+        
     }
-   
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveSegue"{
-            let vc = segue.destination as! ImageViewController
+            let vc = segue.destination as! PhotoVC
+            
             vc.imageSave = selctedImage
             
         }
     }
     
- 
+    
     
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     
- func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if (kind == UICollectionView.elementKindSectionHeader) {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
             
@@ -112,32 +117,32 @@ class DetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
             typeLb = headerView.viewWithTag(4) as? UILabel
             typeName = headerView.viewWithTag(5) as?  UILabel
             overview = headerView.viewWithTag(6) as? UITextView
-          
+            
             nameLb!.text = person.name!
-          
+            
             if person.knowFor != [] {
                 typeName!.text = person.knowFor[0]?.title
                 typeLb!.text = person.knowFor[0]?.type
                 overview!.text = person.knowFor[0]?.overview
             }
-           
+            
             if person.profile_path != nil {
-            let urlString = "https://image.tmdb.org/t/p/w500"+person.profile_path!
-            
-            let url :URL = URL(string: urlString)!
-            
-            let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
+                let urlString = "https://image.tmdb.org/t/p/w500"+person.profile_path!
                 
-                if error == nil && data != nil{
-                    let loadedImage = UIImage(data: data!)
-                    self.profile = loadedImage
-                    DispatchQueue.main.async {
-                        self.profImage.image = loadedImage
-                    }
+                let url :URL = URL(string: urlString)!
+                
+                let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
                     
+                    if error == nil && data != nil{
+                        
+                        self.profile =  UIImage(data: data!)
+                        DispatchQueue.main.async {
+                            self.profImage.image = self.profile
+                        }
+                        
+                    }
                 }
-            }
-            task.resume()
+                task.resume()
             }
             // Customize headerView here
             return headerView
@@ -169,9 +174,9 @@ class DetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
                                 }
                             }
                             DispatchQueue.main.async {
-                                  self.collectionView.reloadData()
+                                self.collectionView.reloadData()
                             }
-                          
+                            
                         }
                     }
                 }

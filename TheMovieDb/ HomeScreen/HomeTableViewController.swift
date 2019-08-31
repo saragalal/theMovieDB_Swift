@@ -64,15 +64,17 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        self.selectedPerson = persons[indexPath.row]
         print("array", persons[indexPath.row].knowFor)
-        
-      performSegue(withIdentifier: "detailsSegue", sender: self)
+        performSegue(withIdentifier: "detSegue", sender: self)
+     
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailsSegue"{
-           let vc = segue.destination as! DetailVC
+     
+        if segue.identifier == "detSegue"{
+            let nav = segue.destination as! UINavigationController
+            let vc = nav.topViewController as! DetailsViewController
             
             vc.person = selectedPerson
-           
+            
         }
     }
     
