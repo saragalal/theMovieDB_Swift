@@ -25,6 +25,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
        self.refreshControl = UIRefreshControl()
         self.refreshControl?.attributedTitle = NSAttributedString(string: "Refresh")
         self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
@@ -33,6 +34,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     
     @objc func refresh(sender:AnyObject) {
         // Code to refresh table view
+        persons = []
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.getData()
         }
@@ -54,10 +56,12 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
+        if persons.count != 0 {
         indRow = indexPath.row
         cell.setCell(person: persons[indexPath.row])
-        
+        }
         return cell
     }
     
@@ -103,7 +107,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
                                 w.initWithDictionary(dict: work)
                                 person.knowFor.append(w)
                             }
-                          //  print("prrrrrrrrr" ,person.knowFor)
+                          
                          self.persons.append(person)
                         }
                               DispatchQueue.main.async {
@@ -132,21 +136,13 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (self.lastContentOffset < scrollView.contentOffset.y) {
-            // did move up
-            print("move up")
+        
             if persons.count != 0 {
-                if indRow == (persons.count - 3) {
+               if indRow == (persons.count - 3) {
                     page_no += 1
                     getData()
-                }
+           }
             }
-        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-            // did move down
-            print("move down")
-           
-        } else {
-            // didn't move
-            print ("no move")
         }
     }
     

@@ -23,7 +23,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     var profImage: UIImageView!
     var profile: UIImage!
     var selctedImage: UIImage!
-    
+  
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -44,21 +44,20 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collCell", for: indexPath)
         
-        //imageView = cell.viewWithTag(1) as? UIImageView
+        imageView = cell.viewWithTag(1) as? UIImageView
         
         if imagesUrl.count != 0 {
-            
+           
             let urlString = "https://image.tmdb.org/t/p/original"+imagesUrl[indexPath.row]
-            
+
             let url :URL = URL(string: urlString)!
-            
             let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
-                
+
                 if error == nil && data != nil{
                     let loadedImage = UIImage(data: data!)
                     DispatchQueue.main.async {
                         let thisCell = self.collectionView.cellForItem(at: indexPath)
-                        
+
                         if (thisCell) != nil {
                            self.imageView = thisCell?.viewWithTag(1) as? UIImageView
                         self.imageView.image = loadedImage
@@ -66,7 +65,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
                     }
                 }
             }
-            task.resume()
+           task.resume()
         }
         
         return cell
@@ -127,7 +126,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
             }
             
             if person.profile_path != nil {
-                let urlString = "https://image.tmdb.org/t/p/w500"+person.profile_path!
+                let urlString = "https://image.tmdb.org/t/p/original"+person.profile_path!
                 
                 let url :URL = URL(string: urlString)!
                 
@@ -144,7 +143,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
                 }
                 task.resume()
             }
-            // Customize headerView here
+           
             return headerView
         }
         fatalError()

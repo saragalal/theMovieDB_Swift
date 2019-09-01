@@ -13,7 +13,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var popLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
-    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -45,15 +45,20 @@ class HomeTableViewCell: UITableViewCell {
     }
   
     func getImage(urlString: String){
-        
+        let urlStr = "https://image.tmdb.org/t/p/w500"+urlString
         let url = URL(string: "https://image.tmdb.org/t/p/w500"+urlString)
+
+        
+        
         let task = URLSession.shared.dataTask(with: url!){ (data, resonse , error) in
             if error == nil && data != nil{
+                
+    
                 let loadedImage = UIImage(data: data!)
-               
+
                   DispatchQueue.main.async {
                     self.profileImage.image = loadedImage
-                    
+
                 }
             }else {
                 DispatchQueue.main.async{
