@@ -34,6 +34,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     
     @objc func refresh(sender:AnyObject) {
         // Code to refresh table view
+       URLCache.shared.removeAllCachedResponses()
         persons = []
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.getData()
