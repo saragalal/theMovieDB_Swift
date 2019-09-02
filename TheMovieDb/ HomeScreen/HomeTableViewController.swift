@@ -36,6 +36,9 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
         // Code to refresh table view
        URLCache.shared.removeAllCachedResponses()
         persons = []
+         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.tableView.reloadData()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.getData()
         }
@@ -116,6 +119,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
                                 {
                                     self.refreshControl?.endRefreshing()
                                 }
+                                 self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
                             self.tableView.reloadData()
                           }
                     }
