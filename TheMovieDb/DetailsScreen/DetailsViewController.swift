@@ -23,7 +23,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     var profImage: UIImageView!
     var profile: UIImage!
     var selctedImage: UIImage!
-  
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -48,24 +48,10 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
         
         if imagesUrl.count != 0 {
            
-            let urlString = "https://image.tmdb.org/t/p/original"+imagesUrl[indexPath.row]
+           
+         let urlString = "https://image.tmdb.org/t/p/original"+imagesUrl[indexPath.row]
+             getCellImage(url: urlString, indexPath: indexPath)
 
-            let url :URL = URL(string: urlString)!
-            let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
-
-                if error == nil && data != nil{
-                    let loadedImage = UIImage(data: data!)
-                    DispatchQueue.main.async {
-                        let thisCell = self.collectionView.cellForItem(at: indexPath)
-
-                        if (thisCell) != nil {
-                           self.imageView = thisCell?.viewWithTag(1) as? UIImageView
-                        self.imageView.image = loadedImage
-                    }
-                    }
-                }
-            }
-           task.resume()
         }
         
         return cell
@@ -93,7 +79,8 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveSegue"{
-            let vc = segue.destination as! PhotoVC
+            let navcontroller = segue.destination as! UINavigationController
+            let vc = navcontroller.topViewController as! PhotoVC
             
             vc.imageSave = selctedImage
             
@@ -117,12 +104,25 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
             typeName = headerView.viewWithTag(5) as?  UILabel
             overview = headerView.viewWithTag(6) as? UITextView
             
+            
+            profImage.layer.masksToBounds = false
+            
+            profImage.layer.cornerRadius = 10
+            profImage.clipsToBounds = true
+            
+            
+            
+            
             nameLb!.text = person.name!
             
             if person.knowFor != [] {
                 typeName!.text = person.knowFor[0]?.title
                 typeLb!.text = person.knowFor[0]?.type
                 overview!.text = person.knowFor[0]?.overview
+            } else {
+                typeName!.text = "no data"
+                typeLb!.text = "no data"
+                overview!.text = "no available data"
             }
             
             if person.profile_path != nil {
@@ -188,6 +188,31 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
         }
     }
     
+    
+    func getCellImage(url : String , indexPath: IndexPath){
+       
+        let url :URL = URL(string: url)!
+        let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
+            
+            if error == nil && data != nil{
+                let loadedImage = UIImage(data: data!)
+                DispatchQueue.main.async {
+                    let thisCell = self.collectionView.cellForItem(at: indexPath)
+                    
+                    if (thisCell) != nil {
+                        self.imageView = thisCell?.viewWithTag(1) as? UIImageView
+                        self.imageView.layer.masksToBounds = false
+                        
+                        self.imageView.layer.cornerRadius = 5
+                        self.imageView.clipsToBounds = true
+                        self.imageView.image = loadedImage
+                    }
+                }
+            }
+        }
+        task.resume()
+        
+    }
     
     /*
      // MARK: - Navigation

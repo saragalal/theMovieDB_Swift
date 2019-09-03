@@ -9,6 +9,8 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+ 
+    
 let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066628c8f78bbb7be41943&language=en-US&sort_by=popularity.desc"
     var persons : [Person] = []
     var page_no = 1
@@ -17,7 +19,8 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     var selectedPerson = Person()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+     self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
         getData()
         
         // Uncomment the following line to preserve selection between presentations
@@ -36,9 +39,9 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
         // Code to refresh table view
        URLCache.shared.removeAllCachedResponses()
         persons = []
-         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+         
         self.tableView.reloadData()
-        
+        self.page_no = 1
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.getData()
         }
@@ -119,7 +122,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
                                 {
                                     self.refreshControl?.endRefreshing()
                                 }
-                                 self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+                                
                             self.tableView.reloadData()
                           }
                     }
@@ -135,7 +138,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
         
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 150
     }
    
     

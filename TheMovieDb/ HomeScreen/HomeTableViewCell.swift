@@ -13,7 +13,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var popLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
-   
+    @IBOutlet weak var cellView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +26,10 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func setCell(person :Person){
+        cellView.layer.setCornerRadious(radious: 10, maskToBounds: false)
+        cellView.layer.setShadow(opacity: 0.1, radious: 10, shadowColor: UIColor.darkGray.cgColor)
+        
+        
         if person.name != nil {
             nameLabel.text = person.name!
         }else {
@@ -45,7 +49,7 @@ class HomeTableViewCell: UITableViewCell {
     }
   
     func getImage(urlString: String){
-        let urlStr = "https://image.tmdb.org/t/p/w500"+urlString
+       
         let url = URL(string: "https://image.tmdb.org/t/p/w500"+urlString)
 
         
@@ -58,6 +62,10 @@ class HomeTableViewCell: UITableViewCell {
 
                   DispatchQueue.main.async {
                     self.profileImage.image = loadedImage
+                    self.profileImage.layer.masksToBounds = false
+                    
+                    self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+                    self.profileImage.clipsToBounds = true
 
                 }
             }else {
