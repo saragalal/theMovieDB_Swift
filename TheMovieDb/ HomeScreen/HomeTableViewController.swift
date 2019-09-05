@@ -17,10 +17,21 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     var lastContentOffset: CGFloat = 0
     var indRow = 0
     var selectedPerson = Person()
+    
+    //For navigation
+   var navigator: NavigationClass?
+    
+    
+    
+    
+   
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
+        navigator = NavigationClass(navigationController: self.navigationController!)
         getData()
         
         // Uncomment the following line to preserve selection between presentations
@@ -74,19 +85,11 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        self.selectedPerson = persons[indexPath.row]
-        print("array", persons[indexPath.row].knowFor)
-        performSegue(withIdentifier: "detSegue", sender: self)
-     
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-        if segue.identifier == "detSegue"{
-            let nav = segue.destination as! UINavigationController
-            let vc = nav.topViewController as! DetailsViewController
-            
-            vc.person = selectedPerson
-            
-        }
+       // print("array", persons[indexPath.row].knowFor)
+        
+        navigator?.navigate(to: .details(person: self.selectedPerson))
+        
+       
     }
     
     func getData(){

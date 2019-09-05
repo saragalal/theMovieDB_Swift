@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     var profile: UIImage!
     var selctedImage: UIImage!
     
+   var navigator: NavigationClass?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -34,6 +35,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
         self.collectionView.dataSource = self
         getImages()
         // Do any additional setup after loading the view.
+        navigator = NavigationClass(navigationController: self.navigationController!)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,32 +67,25 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
         
         selctedImage = imgview?.image
         
-        
-        performSegue(withIdentifier: "saveSegue", sender: self)
+        navigator?.navigate(to: .savePhoto(photo: selctedImage))
+        //performSegue(withIdentifier: "saveSegue", sender: self)
     }
     
     @IBAction func slectProfile(_ sender: Any) {
+             selctedImage = profile
         
-        selctedImage = profile
-        
-        performSegue(withIdentifier: "saveSegue", sender: self)
+        navigator?.navigate(to: .savePhoto(photo: selctedImage))
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "saveSegue"{
-            let navcontroller = segue.destination as! UINavigationController
-            let vc = navcontroller.topViewController as! PhotoVC
-            
-            vc.imageSave = selctedImage
-            
-        }
-    }
-    
-    
+
     
     @IBAction func backAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+      // self.dismiss(animated: true, completion: nil)
+     //navigationController?.popViewController(animated: true)
+
+        navigator?.goBack()
+        
     }
     
     

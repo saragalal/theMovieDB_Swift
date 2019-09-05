@@ -14,11 +14,12 @@ class PhotoVC: UIViewController {
     var imageSave :UIImage!
     
     @IBOutlet weak var imgView: UIImageView!
-    
+    var navigator : NavigationClass?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imgView.image = imageSave
+        navigator = NavigationClass(navigationController: self.navigationController!)
         // Do any additional setup after loading the view.
     }
     
@@ -26,7 +27,8 @@ class PhotoVC: UIViewController {
         UIImageWriteToSavedPhotosAlbum(imageSave, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        navigator?.goBack()
+        
     }
     
     //MARK: - Add image to Library
