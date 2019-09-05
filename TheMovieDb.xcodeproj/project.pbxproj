@@ -18,10 +18,10 @@
 		8433BD3E2318199600A52CBB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433BD3D2318199600A52CBB /* Person.swift */; };
 		84CEFA0123191FAD00AF5C4C /* Works.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEFA0023191FAD00AF5C4C /* Works.swift */; };
 		84CEFA03231939F000AF5C4C /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */; };
-		84CEFA0523195F4A00AF5C4C /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEFA0423195F4A00AF5C4C /* HomeTableViewController.swift */; };
 		84F274E4231B18A70090EFA8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F274E3231B18A70090EFA8 /* DetailsViewController.swift */; };
 		84F274E6231B1A8A0090EFA8 /* Details_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */; };
 		84F274E8231B23F00090EFA8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F274E7231B23F00090EFA8 /* PhotoVC.swift */; };
+		92F76B932321032C0015560F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F76B922321032C0015560F /* HomeViewController.swift */; };
 		92FC2562231E7FB40019A3E9 /* CALayer+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC2561231E7FB40019A3E9 /* CALayer+extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,10 +60,10 @@
 		8433BD3D2318199600A52CBB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		84CEFA0023191FAD00AF5C4C /* Works.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Works.swift; sourceTree = "<group>"; };
 		84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		84CEFA0423195F4A00AF5C4C /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		84F274E3231B18A70090EFA8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details_Storyboard.storyboard; sourceTree = "<group>"; };
 		84F274E7231B23F00090EFA8 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
+		92F76B922321032C0015560F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		92FC2561231E7FB40019A3E9 /* CALayer+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +152,7 @@
 			children = (
 				8433BD3A2318037B00A52CBB /* HomeStoryBoard.storyboard */,
 				84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */,
-				84CEFA0423195F4A00AF5C4C /* HomeTableViewController.swift */,
+				92F76B922321032C0015560F /* HomeViewController.swift */,
 			);
 			path = " HomeScreen";
 			sourceTree = "<group>";
@@ -317,11 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84CEFA0523195F4A00AF5C4C /* HomeTableViewController.swift in Sources */,
 				92FC2562231E7FB40019A3E9 /* CALayer+extensions.swift in Sources */,
 				84CEFA0123191FAD00AF5C4C /* Works.swift in Sources */,
 				84F274E4231B18A70090EFA8 /* DetailsViewController.swift in Sources */,
 				84F274E8231B23F00090EFA8 /* PhotoVC.swift in Sources */,
+				92F76B932321032C0015560F /* HomeViewController.swift in Sources */,
 				84CEFA03231939F000AF5C4C /* HomeTableViewCell.swift in Sources */,
 				8433BD3E2318199600A52CBB /* Person.swift in Sources */,
 				8433BD0E2317F52000A52CBB /* ViewController.swift in Sources */,

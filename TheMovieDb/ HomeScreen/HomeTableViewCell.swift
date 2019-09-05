@@ -57,8 +57,7 @@ class HomeTableViewCell: UITableViewCell {
         let task = URLSession.shared.dataTask(with: url!){ (data, resonse , error) in
             if error == nil && data != nil{
                 
-    
-                let loadedImage = UIImage(data: data!)
+             let loadedImage = UIImage(data: data!)
 
                   DispatchQueue.main.async {
                     self.profileImage.image = loadedImage
