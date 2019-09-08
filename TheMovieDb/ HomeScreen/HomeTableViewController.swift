@@ -19,13 +19,18 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     var lastContentOffset: CGFloat = 0
     var indRow = 0
     var selectedPerson = Person()
+
+    var searchResults : [Person] = []
+    var searchWasDone = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
         
-        getData()
+        getData(urlString: baseURL+"&page="+"\(page_no)")
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,17 +48,103 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
         // Code to refresh table view
        URLCache.shared.removeAllCachedResponses()
         persons = []
-         
+        
+        
+        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
+//        searchBar.showsCancelButton = false
+//        if let cancelButton : UIButton = searchBar.value(forKey: "_cancelButton") as? UIButton{
+//            cancelButton.isEnabled = true
+//        }
+        searchBar.text = ""
+        
+        
         self.tableView.reloadData()
         self.page_no = 1
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.getData()
+            self.getData(urlString: self.baseURL+"&page="+"\(self.page_no)")
         }
        
         
         
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("search bar has been clicked")
+        
+        searchWasDone = true
+        let searchKey = searchBar.text
+        print(searchKey!)
+        searchBar.setShowsCancelButton(true, animated: false)
+        searchBar.resignFirstResponder()
+        if let cancelButton : UIButton = searchBar.value(forKey: "_cancelButton") as? UIButton{
+            cancelButton.isEnabled = true
+        }
+        
+        if(searchKey != nil){
+                let searchUrl = "https://api.themoviedb.org/3/search/person?api_key=facd2bc8ee066628c8f78bbb7be41943&query="+searchKey!
+            getData(urlString: searchUrl)
+            
+        }
 
+   
+//        self.tableView.reloadData()
+        
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: false)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("cancel was selected")
+    
+        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
+        
+        
+//        searchBar.setShowsCancelButton(true, animated: false)
+      
+//        if let cancelButton : UIButton = searchBar.value(forKey: "_cancelButton") as? UIButton{
+//            cancelButton.isEnabled = true
+//        }
+        searchBar.text = ""
+        self.page_no = 1
+        persons = []
+        
+     
+        getData(urlString: self.baseURL+"&page="+"\(self.page_no)")
+   
+        self.tableView.reloadData()
+        
+    }
+    
+   
+
+    // This method updates filteredData based on the text in the Search Box
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+//        filteredData = searchText.isEmpty ? data : data.filter({(dataString: String) -> Bool in
+//            // If dataItem matches the searchText, return true to include it
+//            return dataString.range(of: searchText, options: .caseInsensitive) != nil
+//        })
+        
+        
+       
+        
+        self.searchBar.becomeFirstResponder()
+        print("search bar has changed")
+        URLCache.shared.removeAllCachedResponses()
+        searchBar.showsCancelButton = true
+        persons.removeAll()
+        self.tableView.reloadData()
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -93,8 +184,8 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
         }
     }
     
-    func getData(){
-        let urlString :String  = baseURL+"&page="+"\(page_no)"
+    func getData(urlString : String){
+//        let urlString :String  = baseURL+"&page="+"\(page_no)"
         
         let url :URL = URL(string: urlString)!
         
@@ -120,6 +211,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
                             }
                           
                          self.persons.append(person)
+//                        self.personsToSearchFrom.append(person) //smsm added this
                         }
                               DispatchQueue.main.async {
                                 if self.refreshControl?.isRefreshing ?? false
@@ -152,7 +244,7 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
             if persons.count != 0 {
                if indRow == (persons.count - 3) {
                     page_no += 1
-                    getData()
+                    getData(urlString: baseURL+"&page="+"\(page_no)")
            }
             }
         }
