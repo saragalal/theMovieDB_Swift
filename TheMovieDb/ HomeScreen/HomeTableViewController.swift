@@ -8,8 +8,10 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, UISearchBarDelegate {
  
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
 let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066628c8f78bbb7be41943&language=en-US&sort_by=popularity.desc"
     var persons : [Person] = []
@@ -20,6 +22,8 @@ let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066
     override func viewDidLoad() {
         super.viewDidLoad()
      self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        searchBar.delegate = self
         
         getData()
         
