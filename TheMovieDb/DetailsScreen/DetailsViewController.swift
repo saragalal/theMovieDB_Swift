@@ -9,6 +9,10 @@
 import UIKit
 
 class DetailsViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource {
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    
+    
     
     var baseUrl = "https://api.themoviedb.org/3/person/"
     var imagesUrl : [String] = []
@@ -25,14 +29,27 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     var selctedImage: UIImage!
     
     
-    @IBOutlet weak var collectionView: UICollectionView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        getImages()
+        //getImages()
+        //getImages()
+        if (person.id != nil) {
+            person.requestAllImage(imgUrl: baseUrl, id: person.id! ,completion:{ urlArray in
+                if urlArray != nil {
+                    self.imagesUrl = urlArray!
+                    print("urls   ",urlArray!)
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
+                
+            })
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -49,7 +66,8 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
         if imagesUrl.count != 0 {
            
            
-         let urlString = "https://image.tmdb.org/t/p/original"+imagesUrl[indexPath.row]
+         let urlString = imagesUrl[indexPath.row]
+            
              getCellImage(url: urlString, indexPath: indexPath)
 
         }
@@ -109,10 +127,6 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
             
             profImage.layer.cornerRadius = 10
             profImage.clipsToBounds = true
-            
-            
-            
-            
             nameLb!.text = person.name!
             
             if person.knowFor != [] {
@@ -126,22 +140,20 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
             }
             
             if person.profile_path != nil {
-                let urlString = "https://image.tmdb.org/t/p/original"+person.profile_path!
+                let urlString = person.profile_path!
                 
-                let url :URL = URL(string: urlString)!
+               // let url :URL = URL(string: urlString)!
+                //getCellImage(url: urlString, indexPath: indexPath)
                 
-                let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
+                person.requestImage(imgUrl: urlString, completion: {data in
                     
-                    if error == nil && data != nil{
-                        
-                        self.profile =  UIImage(data: data!)
-                        DispatchQueue.main.async {
-                            self.profImage.image = self.profile
-                        }
-                        
+                    let loadedImage = UIImage(data: data!)
+                    DispatchQueue.main.async {
+                        self.profImage.image = loadedImage
                     }
-                }
-                task.resume()
+                })
+
+
             }
            
             return headerView
@@ -149,79 +161,34 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
         fatalError()
     }
     
-    func getImages(){
-        if person.id != nil {
-            let urlString = baseUrl+"\(person.id!)"+"/images?api_key=facd2bc8ee066628c8f78bbb7be41943"
-            
-            let url :URL = URL(string: urlString)!
-            
-            let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
-                do{
-                    if (data != nil){
-                        
-                        let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
-                        
-                        print("dic resposne \(dic!)")
-                        
-                        let results = dic?["profiles"] as? [NSDictionary]
-                        if results != nil {
-                            for result in results! {
-                                let str = result["file_path"] as? String
-                                if str != nil {
-                                    self.imagesUrl.append(str!)
-                                    
-                                }
-                            }
-                            DispatchQueue.main.async {
-                                self.collectionView.reloadData()
-                            }
-                            
-                        }
-                    }
-                }
-                catch {
-                    print("json error \(error)")
-                }
-                
-            }
-            task.resume()
-        }
-    }
-    
+
     
     func getCellImage(url : String , indexPath: IndexPath){
        
-        let url :URL = URL(string: url)!
-        let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
+
+        person.requestImage(imgUrl: url, completion: {data in
             
-            if error == nil && data != nil{
-                let loadedImage = UIImage(data: data!)
-                DispatchQueue.main.async {
-                    let thisCell = self.collectionView.cellForItem(at: indexPath)
+            let loadedImage = UIImage(data: data!)
+            DispatchQueue.main.async {
+                let thisCell = self.collectionView.cellForItem(at: indexPath)
+                
+                if (thisCell) != nil {
+                    self.imageView = thisCell?.viewWithTag(1) as? UIImageView
+                    self.imageView.layer.masksToBounds = false
                     
-                    if (thisCell) != nil {
-                        self.imageView = thisCell?.viewWithTag(1) as? UIImageView
-                        self.imageView.layer.masksToBounds = false
-                        
-                        self.imageView.layer.cornerRadius = 5
-                        self.imageView.clipsToBounds = true
-                        self.imageView.image = loadedImage
-                    }
+                    self.imageView.layer.cornerRadius = 5
+                    self.imageView.clipsToBounds = true
+                    self.imageView.image = loadedImage
                 }
+                
+               
             }
-        }
-        task.resume()
+        })
+        
+        
         
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+  
     
 }
