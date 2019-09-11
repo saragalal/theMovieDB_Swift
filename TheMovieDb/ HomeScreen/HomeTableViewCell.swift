@@ -43,25 +43,25 @@ class HomeTableViewCell: UITableViewCell {
         } else {
             popLabel.text = "no popularity available"
         }
-        if person.profile_path != nil {
-            
-            actor.requestImage(imgUrl: person.profile_path!, completion: {data in
-               
-                DispatchQueue.main.async {
-                    if data != nil {
-                        self.profileImage.image = UIImage(data: data!)
-                        
-                    } else {
-                        
-                        self.profileImage.image = UIImage(named: "noimage.png")
-                    }
-                   
-                }
-                
-                 
-                
-            })
-        }
+//        if person.profile_path != nil {
+//            
+//            actor.requestImage(imgUrl: person.profile_path!, completion: {data in
+//               
+//                DispatchQueue.main.async {
+//                    if data != nil {
+//                        self.profileImage.image = UIImage(data: data!)
+//                        
+//                    } else {
+//                        
+//                        self.profileImage.image = UIImage(named: "noimage.png")
+//                    }
+//                   
+//                }
+//                
+//                 
+//                
+//            })
+//        }
         
     }
   

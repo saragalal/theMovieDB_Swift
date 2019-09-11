@@ -59,20 +59,40 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collCell", for: indexPath) as? DetailsCollectionViewCell
         
-        imageView = cell.viewWithTag(1) as? UIImageView
         
-        if imagesUrl.count != 0 {
-           
-           
-         let urlString = imagesUrl[indexPath.row]
+     cell?.setCell(person: self.person , urlStr: imagesUrl[indexPath.row])
+        
+//        imageView = cell.viewWithTag(1) as? UIImageView
+//
+//        if imagesUrl.count != 0 {
+//
+//
+//         let urlString = imagesUrl[indexPath.row]
+//
+//             getCellImage(url: urlString, indexPath: indexPath)
+//
+//        }
+        
+        person.requestImage(imgUrl: imagesUrl[indexPath.row], completion: {data in
             
-             getCellImage(url: urlString, indexPath: indexPath)
-
-        }
+            DispatchQueue.main.async {
+                if data != nil {
+                    cell!.imgView.image = UIImage(data: data!)
+                    
+                } else {
+                    
+                    cell!.imgView.image = UIImage(named: "noimage.png")
+                }
+                
+            }
+            
+            
+        })
         
-        return cell
+        
+        return cell!
     }
     
     
@@ -114,49 +134,14 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if (kind == UICollectionView.elementKindSectionHeader) {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
-            
-            nameLb = headerView.viewWithTag(2) as? UILabel
-            profImage = headerView.viewWithTag(3) as? UIImageView
-            typeLb = headerView.viewWithTag(4) as? UILabel
-            typeName = headerView.viewWithTag(5) as?  UILabel
-            overview = headerView.viewWithTag(6) as? UITextView
-            
-            
-            profImage.layer.masksToBounds = false
-            
-            profImage.layer.cornerRadius = 10
-            profImage.clipsToBounds = true
-            nameLb!.text = person.name!
-            
-            if person.knowFor != [] {
-                typeName!.text = person.knowFor[0]?.title
-                typeLb!.text = person.knowFor[0]?.type
-                overview!.text = person.knowFor[0]?.overview
-            } else {
-                typeName!.text = "no data"
-                typeLb!.text = "no data"
-                overview!.text = "no available data"
-            }
-            
-            if person.profile_path != nil {
-                let urlString = person.profile_path!
-                
-               // let url :URL = URL(string: urlString)!
-                //getCellImage(url: urlString, indexPath: indexPath)
-                
-                person.requestImage(imgUrl: urlString, completion: {data in
-                    
-                    let loadedImage = UIImage(data: data!)
-                    DispatchQueue.main.async {
-                        self.profImage.image = loadedImage
-                    }
-                })
-
-
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as? DetailsCollectionReusableView
+           
+            if headerView != nil {
+                headerView!.setView(person: self.person)
+          
             }
            
-            return headerView
+            return headerView!
         }
         fatalError()
     }

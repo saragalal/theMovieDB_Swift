@@ -26,7 +26,8 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     var imgProfile = UIImage()
     
     var actorsModel = Actors()
-    
+    var person = Person()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -48,6 +49,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     
     
     func sendRequest(urlstring: String,no_page : Int) {
+        
         actorsModel.requestActorArray(urlStr: urlstring, page: no_page, complation: { result in
             print("result" ,result!)
             if result != nil {
@@ -160,6 +162,30 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         if persons.count != 0 {
             indRow = indexPath.row
             cell.setCell(person: persons[indexPath.row])
+            let urlStr = persons[indexPath.row].profile_path
+            if urlStr != nil {
+               
+             person.requestImageFromURL(urlString: urlStr! , indexPathArg: indexPath , completionHandler: { data , url , indexPath in
+                DispatchQueue.main.async {
+                    let indArray = self.tableView.indexPathsForVisibleRows
+                    if (indArray?.contains(indexPath!))!
+                    {
+                        if data != nil {
+                            cell.profileImage.image = UIImage(data: data!)
+                        }
+                    } else {
+                        cell.profileImage.image = UIImage(named: "noimage.png")
+                        
+                    }
+                }
+                
+               
+                
+            })
+            
+            }else {
+                cell.profileImage.image = UIImage(named: "noimage.png")
+            }
         }
         return cell
     }

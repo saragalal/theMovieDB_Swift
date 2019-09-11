@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Network {
 
@@ -81,5 +82,36 @@ func getData(urlString : String , page_no: Int){
     
     
 
+    
+    func imageForUrl(urlString: String , indexPathArg:IndexPath!, completionHandler:@escaping (_ imageData: Data?, _ url: String,_ indexPathResponse:IndexPath?) -> ()) {
+        
+        let currentIndexPath = indexPathArg as IndexPath
+        let url = URL(string: "https://image.tmdb.org/t/p/original"+urlString)
+        
+       
+            
+            //Data does not exist, We have to download it
+            
+            let task = URLSession.shared.dataTask(with: url!){ (data, resonse , error) in
+                if error == nil {
+                    
+                    if self.getImageDelegate != nil {
+                        self.getImageDelegate!.imageReceived(data: data)
+                    }
+                    
+                }
+                   completionHandler(data, urlString, currentIndexPath)
+                
+                }
+        
+            task.resume()
+      
+        
+    }
+    
+    
+    
+    
+    
     
 }

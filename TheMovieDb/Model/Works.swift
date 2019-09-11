@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Works :NSObject {
+class Works  {
   
     var title :String?
     var vote :Int?
@@ -16,7 +16,7 @@ class Works :NSObject {
     var overview :String?
     
 
-override init() {
+ init() {
     title = ""
     vote = 0
     type = ""

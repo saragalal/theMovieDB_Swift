@@ -21,6 +21,8 @@ class Person : GetImageDelegate ,GetAllActorImages{
     
     var getImageUrls : (([String]) -> ())?
     
+    var imageFromURl : ((Data, String ,IndexPath) -> ())?
+    
     var network = Network()
    init() {
         id = 0
@@ -46,7 +48,13 @@ class Person : GetImageDelegate ,GetAllActorImages{
         updateImgView = completion
     }
 
-    
+    func requestImageFromURL(urlString: String , indexPathArg:IndexPath!, completionHandler:@escaping (_ imageData: Data?, _ url: String,_ indexPathResponse:IndexPath?) -> ()){
+        imageFromURl = completionHandler
+        network.imageForUrl(urlString: urlString, indexPathArg: indexPathArg!) { (data, str, indexPath) in
+            self.imageFromURl!(data! , str, indexPath!)
+        }
+        
+    }
     func imageReceived(data: Data?) {
           updateImgView?(data!)
     }
