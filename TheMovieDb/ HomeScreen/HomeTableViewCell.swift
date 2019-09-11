@@ -32,6 +32,7 @@ class HomeTableViewCell: UITableViewCell {
     func setCell(person :Person){
         cellView.layer.setCornerRadious(radious: 10, maskToBounds: false)
         cellView.layer.setShadow(opacity: 0.1, radious: 10, shadowColor: UIColor.darkGray.cgColor)
+       
        if person.name != nil {
             nameLabel.text = person.name!
         }else {

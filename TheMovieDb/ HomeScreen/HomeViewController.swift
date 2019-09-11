@@ -14,6 +14,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066628c8f78bbb7be41943&language=en-US&sort_by=popularity.desc"
+    
     var searchUrl = "https://api.themoviedb.org/3/search/person?api_key=facd2bc8ee066628c8f78bbb7be41943&query="
     var persons : [Person] = []
     var page_no = 1
@@ -24,10 +25,10 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     var searchResults : [Person] = []
     var searchWasDone = false
     var imgProfile = UIImage()
-    
+    var searchKey :String? = ""
     var actorsModel = Actors()
     var person = Person()
-  
+    var arr = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -42,6 +43,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
         self.tableView.addSubview(self.tableView.refreshControl!) // not required when using UITableViewController
     }
+    
     override func viewWillAppear(_ animated: Bool) {
    
         sendRequest(urlstring: baseURL, no_page: page_no)
@@ -49,11 +51,12 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     
     
     func sendRequest(urlstring: String,no_page : Int) {
-        
+        print(urlstring)
         actorsModel.requestActorArray(urlStr: urlstring, page: no_page, complation: { result in
-            print("result" ,result!)
+           // print("result" ,result!)
             if result != nil {
-                self.persons = result!.actors
+                self.persons.append(contentsOf: result!.actors)
+              
                 DispatchQueue.main.async {
                     if self.tableView.refreshControl?.isRefreshing ?? false
                                 {
@@ -94,7 +97,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         print("search bar has been clicked")
         searchISPressed = true
         searchWasDone = true
-        let searchKey = searchBar.text
+       searchKey = searchBar.text
         print(searchKey!)
         searchBar.setShowsCancelButton(true, animated: false)
         searchBar.resignFirstResponder()
@@ -103,9 +106,10 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         }
         
         if searchKey != nil , searchKey != "" {
-            searchUrl += searchKey!
-
-             sendRequest(urlstring: searchUrl, no_page: page_no)
+           
+         print(searchUrl)
+            
+            sendRequest(urlstring: searchUrl+searchKey!, no_page: page_no)
         }
     }
     
@@ -137,9 +141,9 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         
         self.searchBar.becomeFirstResponder()
         print("search bar has changed")
-        URLCache.shared.removeAllCachedResponses()
+        
         searchBar.showsCancelButton = true
-        persons.removeAll()
+        persons = []
         self.tableView.reloadData()
         
     }
@@ -159,36 +163,62 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
+    
         if persons.count != 0 {
             indRow = indexPath.row
-            cell.setCell(person: persons[indexPath.row])
+                        cell.setCell(person: persons[indexPath.row])
             let urlStr = persons[indexPath.row].profile_path
             if urlStr != nil {
-               
-             person.requestImageFromURL(urlString: urlStr! , indexPathArg: indexPath , completionHandler: { data , url , indexPath in
-                DispatchQueue.main.async {
-                    let indArray = self.tableView.indexPathsForVisibleRows
-                    if (indArray?.contains(indexPath!))!
-                    {
-                        if data != nil {
-                            cell.profileImage.image = UIImage(data: data!)
-                        }
-                    } else {
-                        cell.profileImage.image = UIImage(named: "noimage.png")
-                        
-                    }
-                }
                 
-               
-                
-            })
-            
-            }else {
-                cell.profileImage.image = UIImage(named: "noimage.png")
+                person.requestImage(imgUrl:urlStr!, completion: {data in
+
+                                    DispatchQueue.main.async {
+                                        if let updateCell = tableView.cellForRow(at: indexPath) {
+
+
+                                        if data != nil {
+                                            cell.profileImage.image = UIImage(data: data!)
+
+                                        } else {
+
+                                            cell.profileImage.image = UIImage(named: "noimage.png")
+                                        }
+                                       }
+                                    }
+                })
             }
-        }
+            
+//               arr.append(urlStr!)
+//             person.requestImageFromURL(urlString: urlStr! , indexPathArg: indexPath , completionHandler: { data , url , indexPath in
+//                var i = 0
+//
+//                DispatchQueue.main.async {
+//
+//                    let indArray = self.tableView.indexPathsForVisibleRows
+//                    if (indArray?.contains(indexPath!))!
+//                    {  if self.arr[i] == url {
+//                        if data != nil {
+//                            cell.profileImage.image = UIImage(data: data!)
+//                        }
+//                    } else {
+//                        cell.profileImage.image = UIImage(named: "noimage.png")
+//                        }
+//                    }
+//                    i+=1
+//                }
+//
+//
+//
+//            })
+//
+//            }else {
+//                cell.profileImage.image = UIImage(named: "noimage.png")
+//            }
+    }
         return cell
     }
+    
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedPerson = persons[indexPath.row]
@@ -222,7 +252,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
                         if page_no < 500{
                             page_no += 1
                        
-                            sendRequest(urlstring: searchUrl, no_page: page_no)
+                            sendRequest(urlstring: searchUrl+searchKey!, no_page: page_no)
                         }
                     } else {
                         if page_no < 467 {

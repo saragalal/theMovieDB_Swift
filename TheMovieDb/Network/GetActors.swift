@@ -14,7 +14,7 @@ class Network {
     
     var getActorDelegate :GetActorsDelegate?
     var getImageDelegate : GetImageDelegate?
-    var imageCallBack : ((Data) ->())?
+ 
     var getAllImages: GetAllActorImages?
     
 func getData(urlString : String , page_no: Int){

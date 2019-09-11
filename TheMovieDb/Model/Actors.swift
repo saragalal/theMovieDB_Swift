@@ -29,7 +29,7 @@ class Actors: GetActorsDelegate {
     }
     
     func receivingData(data: Data) {
-        
+        actors = []
         print("data is received .......")
         
         do {
