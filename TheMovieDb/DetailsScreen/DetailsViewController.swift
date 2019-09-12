@@ -18,7 +18,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     var imagesUrl : [String] = []
     
     var person = Person()
-    var imageView :UIImageView!
+    var imageview :UIImageView!
     var typeLb: UILabel!
     var typeName: UILabel!
     var overview: UITextView!
@@ -50,7 +50,7 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
             })
         }
         
-        // Do any additional setup after loading the view.
+      
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,37 +61,9 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collCell", for: indexPath) as? DetailsCollectionViewCell
         
-        
-     cell?.setCell(person: self.person , urlStr: imagesUrl[indexPath.row])
-        
-//        imageView = cell.viewWithTag(1) as? UIImageView
-//
-//        if imagesUrl.count != 0 {
-//
-//
-//         let urlString = imagesUrl[indexPath.row]
-//
-//             getCellImage(url: urlString, indexPath: indexPath)
-//
-//        }
-        
-        person.requestImage(imgUrl: imagesUrl[indexPath.row], completion: {data in
-            
-            DispatchQueue.main.async {
-                if data != nil {
-                    cell!.imgView.image = UIImage(data: data!)
-                    
-                } else {
-                    
-                    cell!.imgView.image = UIImage(named: "noimage.png")
-                }
-                
-            }
-            
-            
-        })
-        
-        
+        getCellImage(url: imagesUrl[indexPath.row], indexPath: indexPath)
+    // cell?.setCell(person: self.person , urlStr: imagesUrl[indexPath.row])
+    
         return cell!
     }
     
@@ -135,11 +107,12 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if (kind == UICollectionView.elementKindSectionHeader) {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as? DetailsCollectionReusableView
-           
+           headerView?.setView(person: person)
             if headerView != nil {
-                headerView!.setView(person: self.person)
-          
+                   headerView?.setProfImage(img: profile)
+              
             }
+     
            
             return headerView!
         }
@@ -151,23 +124,23 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     func getCellImage(url : String , indexPath: IndexPath){
        
 
-        person.requestImage(imgUrl: url, completion: {data in
-            
+        person.requestImage(imgUrl: url,indexPath: indexPath ,completion: {data ,ind in
+            if data != nil {
             let loadedImage = UIImage(data: data!)
             DispatchQueue.main.async {
-                let thisCell = self.collectionView.cellForItem(at: indexPath)
-                
-                if (thisCell) != nil {
-                    self.imageView = thisCell?.viewWithTag(1) as? UIImageView
-                    self.imageView.layer.masksToBounds = false
-                    
-                    self.imageView.layer.cornerRadius = 5
-                    self.imageView.clipsToBounds = true
-                    self.imageView.image = loadedImage
+ 
+                    let thisCell = self.collectionView.cellForItem(at: ind) as? DetailsCollectionViewCell
+                    if (thisCell) != nil {
+                        
+                        thisCell?.setImageCell(img: loadedImage!)
+                        self.imageview = thisCell?.viewWithTag(1) as? UIImageView
+                        if self.imageview != nil {
+                            thisCell?.imgView = self.imageview
+                       }
+                    }
+
                 }
-                
-               
-            }
+                }
         })
         
         

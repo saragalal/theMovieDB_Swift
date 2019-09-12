@@ -25,9 +25,10 @@
 		9239211C23279F4F008D6ECD /* GetActors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211B23279F4F008D6ECD /* GetActors.swift */; };
 		9239211E23279F71008D6ECD /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211D23279F71008D6ECD /* Actors.swift */; };
 		923921222327A86A008D6ECD /* GetActorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921202327A86A008D6ECD /* GetActorsDelegate.swift */; };
-		923921242327DEE4008D6ECD /* CustomCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921232327DEE4008D6ECD /* CustomCellDelegate.swift */; };
 		92BC7FB12328CE9700C15EDD /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB02328CE9700C15EDD /* DetailsCollectionViewCell.swift */; };
 		92BC7FB32328CEB100C15EDD /* DetailsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB22328CEB100C15EDD /* DetailsCollectionReusableView.swift */; };
+		92BC7FB523290D0100C15EDD /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB423290D0100C15EDD /* CellViewController.swift */; };
+		92BC7FB723290D2000C15EDD /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB623290D2000C15EDD /* CellProtocol.swift */; };
 		92FC2562231E7FB40019A3E9 /* CALayer+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC2561231E7FB40019A3E9 /* CALayer+extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,9 +74,10 @@
 		9239211B23279F4F008D6ECD /* GetActors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActors.swift; sourceTree = "<group>"; };
 		9239211D23279F71008D6ECD /* Actors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actors.swift; sourceTree = "<group>"; };
 		923921202327A86A008D6ECD /* GetActorsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActorsDelegate.swift; sourceTree = "<group>"; };
-		923921232327DEE4008D6ECD /* CustomCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellDelegate.swift; sourceTree = "<group>"; };
 		92BC7FB02328CE9700C15EDD /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		92BC7FB22328CEB100C15EDD /* DetailsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionReusableView.swift; sourceTree = "<group>"; };
+		92BC7FB423290D0100C15EDD /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
+		92BC7FB623290D2000C15EDD /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
 		92FC2561231E7FB40019A3E9 /* CALayer+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +168,8 @@
 				8433BD3A2318037B00A52CBB /* HomeStoryBoard.storyboard */,
 				84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */,
 				923921182327980B008D6ECD /* HomeViewController.swift */,
-				923921232327DEE4008D6ECD /* CustomCellDelegate.swift */,
+				92BC7FB423290D0100C15EDD /* CellViewController.swift */,
+				92BC7FB623290D2000C15EDD /* CellProtocol.swift */,
 			);
 			path = " HomeScreen";
 			sourceTree = "<group>";
@@ -345,7 +348,9 @@
 			files = (
 				92BC7FB32328CEB100C15EDD /* DetailsCollectionReusableView.swift in Sources */,
 				9239211E23279F71008D6ECD /* Actors.swift in Sources */,
+				92BC7FB523290D0100C15EDD /* CellViewController.swift in Sources */,
 				92FC2562231E7FB40019A3E9 /* CALayer+extensions.swift in Sources */,
+				92BC7FB723290D2000C15EDD /* CellProtocol.swift in Sources */,
 				84CEFA0123191FAD00AF5C4C /* Works.swift in Sources */,
 				84F274E4231B18A70090EFA8 /* DetailsViewController.swift in Sources */,
 				84F274E8231B23F00090EFA8 /* PhotoVC.swift in Sources */,
@@ -354,7 +359,6 @@
 				84CEFA03231939F000AF5C4C /* HomeTableViewCell.swift in Sources */,
 				9239211C23279F4F008D6ECD /* GetActors.swift in Sources */,
 				8433BD3E2318199600A52CBB /* Person.swift in Sources */,
-				923921242327DEE4008D6ECD /* CustomCellDelegate.swift in Sources */,
 				8433BD0E2317F52000A52CBB /* ViewController.swift in Sources */,
 				8433BD0C2317F52000A52CBB /* AppDelegate.swift in Sources */,
 				92BC7FB12328CE9700C15EDD /* DetailsCollectionViewCell.swift in Sources */,

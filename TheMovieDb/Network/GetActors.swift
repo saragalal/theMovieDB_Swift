@@ -17,6 +17,8 @@ class Network {
  
     var getAllImages: GetAllActorImages?
     
+    let imageCache = NSCache<NSString, NSData>()
+    
 func getData(urlString : String , page_no: Int){
     
     let urlStr :String  = urlString+"&page="+"\(page_no)"
@@ -40,17 +42,21 @@ func getData(urlString : String , page_no: Int){
 }
     
     
-    func getImage(urlString: String){
+    func getImage(urlString: String, indexPath: IndexPath){
+        let fullStr = "https://image.tmdb.org/t/p/original"+urlString
         
-        let url = URL(string: "https://image.tmdb.org/t/p/original"+urlString)
+        let url = URL(string: fullStr)
+        if let cachedVersion = imageCache.object(forKey: fullStr as NSString){
+            self.getImageDelegate!.imageReceived(data: cachedVersion as Data, indexPath: indexPath)
         
-        
-        
-        let task = URLSession.shared.dataTask(with: url!){ (data, resonse , error) in
+    }
+    else {
+    let task = URLSession.shared.dataTask(with: url!){ (data, resonse , error) in
             if error == nil {
               
                 if self.getImageDelegate != nil {
-                    self.getImageDelegate!.imageReceived(data: data)
+                    self.imageCache.setObject(data! as NSData, forKey: fullStr as NSString)
+                    self.getImageDelegate!.imageReceived(data: data, indexPath: indexPath)
                 }
 
            }
@@ -58,7 +64,7 @@ func getData(urlString : String , page_no: Int){
         }
         task.resume()
     }
-  
+}
     func getActorImages(urlString: String,id: Int){
      
             let urlString = urlString+"\(id)"+"/images?api_key=facd2bc8ee066628c8f78bbb7be41943"
@@ -79,36 +85,6 @@ func getData(urlString : String , page_no: Int){
         }
             task.resume()
         }
-    
-    
-
-    
-    func imageForUrl(urlString: String , indexPathArg:IndexPath!, completionHandler:@escaping (_ imageData: Data?, _ url: String,_ indexPathResponse:IndexPath?) -> ()) {
-        
-        let currentIndexPath = indexPathArg as IndexPath
-        let url = URL(string: "https://image.tmdb.org/t/p/original"+urlString)
-        
-       
-            
-            //Data does not exist, We have to download it
-            
-            let task = URLSession.shared.dataTask(with: url!){ (data, resonse , error) in
-                if error == nil {
-                    
-                    if self.getImageDelegate != nil {
-                        self.getImageDelegate!.imageReceived(data: data)
-                    }
-                    
-                }
-                   completionHandler(data, urlString, currentIndexPath)
-                
-                }
-        
-            task.resume()
-      
-        
-    }
-    
     
     
     

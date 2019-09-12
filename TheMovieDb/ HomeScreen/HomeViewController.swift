@@ -24,11 +24,12 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     var searchISPressed = false
     var searchResults : [Person] = []
     var searchWasDone = false
-    var imgProfile = UIImage()
+    var imgProfile: UIImage?
     var searchKey :String? = ""
     var actorsModel = Actors()
     var person = Person()
-    var arr = [String]()
+    var cellVC = CellViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -37,11 +38,12 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         
-  
-       tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Refresh")
         tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
         self.tableView.addSubview(self.tableView.refreshControl!) // not required when using UITableViewController
+        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -164,56 +166,13 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
     
+    
+    
         if persons.count != 0 {
             indRow = indexPath.row
-                        cell.setCell(person: persons[indexPath.row])
-            let urlStr = persons[indexPath.row].profile_path
-            if urlStr != nil {
-                
-                person.requestImage(imgUrl:urlStr!, completion: {data in
-
-                                    DispatchQueue.main.async {
-                                        if let updateCell = tableView.cellForRow(at: indexPath) {
-
-
-                                        if data != nil {
-                                            cell.profileImage.image = UIImage(data: data!)
-
-                                        } else {
-
-                                            cell.profileImage.image = UIImage(named: "noimage.png")
-                                        }
-                                       }
-                                    }
-                })
-            }
+            cellVC.setDelegate(cell: cell, indexPath: indexPath, person: persons[indexPath.row], table: self.tableView)
             
-//               arr.append(urlStr!)
-//             person.requestImageFromURL(urlString: urlStr! , indexPathArg: indexPath , completionHandler: { data , url , indexPath in
-//                var i = 0
-//
-//                DispatchQueue.main.async {
-//
-//                    let indArray = self.tableView.indexPathsForVisibleRows
-//                    if (indArray?.contains(indexPath!))!
-//                    {  if self.arr[i] == url {
-//                        if data != nil {
-//                            cell.profileImage.image = UIImage(data: data!)
-//                        }
-//                    } else {
-//                        cell.profileImage.image = UIImage(named: "noimage.png")
-//                        }
-//                    }
-//                    i+=1
-//                }
-//
-//
-//
-//            })
-//
-//            }else {
-//                cell.profileImage.image = UIImage(named: "noimage.png")
-//            }
+           
     }
         return cell
     }
@@ -222,7 +181,9 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedPerson = persons[indexPath.row]
-
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView
+        self.imgProfile = selectedImageView?.image
         print("array", persons[indexPath.row].knowFor)
         performSegue(withIdentifier: "detSegue", sender: self)
         
@@ -232,9 +193,8 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         if segue.identifier == "detSegue"{
             let nav = segue.destination as! UINavigationController
             let vc = nav.topViewController as! DetailsViewController
-            
             vc.person = selectedPerson
-           
+           vc.profile = self.imgProfile
         }
     }
 
@@ -246,7 +206,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             
             if persons.count != 0 {
-                if indRow == (persons.count - 3) {
+                if indRow == (persons.count - 1) {
                     
                     if searchISPressed  {
                         if page_no < 500{
@@ -257,7 +217,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
                     } else {
                         if page_no < 467 {
                             page_no += 1
-                       
+                       print("requestnewpage")
                             sendRequest(urlstring: baseURL, no_page: page_no)
                         }
                     }

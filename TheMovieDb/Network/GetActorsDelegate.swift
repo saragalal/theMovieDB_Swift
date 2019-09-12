@@ -15,7 +15,7 @@ protocol GetActorsDelegate {
 }
 
 protocol GetImageDelegate {
-    func imageReceived (data: Data?)
+    func imageReceived (data: Data?, indexPath: IndexPath)
     
 }
 

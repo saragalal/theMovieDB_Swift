@@ -17,11 +17,11 @@ class Person : GetImageDelegate ,GetAllActorImages{
  var profile_path : String?
  var popularity : Double?
     
-    var updateImgView : ((Data) -> ())?
+    var updateImgView : ((Data, IndexPath) -> ())?
     
     var getImageUrls : (([String]) -> ())?
     
-    var imageFromURl : ((Data, String ,IndexPath) -> ())?
+  
     
     var network = Network()
    init() {
@@ -43,20 +43,15 @@ class Person : GetImageDelegate ,GetAllActorImages{
         
     }
     
-    func requestImage(imgUrl: String , completion: @escaping (_ data: Data?) -> ()){
-        network.getImage(urlString: imgUrl)
+    func requestImage(imgUrl: String ,indexPath: IndexPath, completion: @escaping (_ data: Data?, _ indexPath: IndexPath) -> ()){
+        network.getImage(urlString: imgUrl, indexPath: indexPath)
         updateImgView = completion
     }
 
-    func requestImageFromURL(urlString: String , indexPathArg:IndexPath!, completionHandler:@escaping (_ imageData: Data?, _ url: String,_ indexPathResponse:IndexPath?) -> ()){
-        imageFromURl = completionHandler
-        network.imageForUrl(urlString: urlString, indexPathArg: indexPathArg!) { (data, str, indexPath) in
-            self.imageFromURl!(data! , str, indexPath!)
-        }
+
+    func imageReceived(data: Data?, indexPath: IndexPath) {
+          updateImgView?(data! , indexPath)
         
-    }
-    func imageReceived(data: Data?) {
-          updateImgView?(data!)
     }
     
     func requestAllImage(imgUrl: String ,id: Int ,completion: @escaping (_ urlArray: [String]?) -> () ){
@@ -81,9 +76,7 @@ class Person : GetImageDelegate ,GetAllActorImages{
                                     
                            self.getImageUrls?(imagesUrl)
                                     
-//                                    DispatchQueue.main.async {
-//                                        self.collectionView.reloadData()
-//                                    }
+
         
                                 }
         } catch {
