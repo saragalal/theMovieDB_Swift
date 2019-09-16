@@ -10,25 +10,29 @@ import Foundation
 import UIKit
 
 class Network {
-
-    
     var getActorDelegate :GetActorsDelegate?
     var getImageDelegate : GetImageDelegate?
  
     var getAllImages: GetAllActorImages?
     
     let imageCache = NSCache<NSString, NSData>()
-    
+    let reponseCaching = NSCache<NSString, NSData>()
+   
 func getData(urlString : String , page_no: Int){
     
     let urlStr :String  = urlString+"&page="+"\(page_no)"
     
+    if reponseCaching.object(forKey: urlStr as NSString) != nil {
+        self.getActorDelegate!.receivingData(data: reponseCaching.object(forKey: urlStr as NSString)! as Data)
+    
+    }else {
     let url :URL = URL(string: urlStr)!
     
     let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
         do{
             if (data != nil){
                  if self.getActorDelegate != nil {
+                    self.reponseCaching.setObject(data! as NSData, forKey: urlStr as NSString)
                  self.getActorDelegate!.receivingData(data: data!)
                 }
 
@@ -38,7 +42,7 @@ func getData(urlString : String , page_no: Int){
         
     }
     task.resume()
-    
+    }
 }
     
     
@@ -46,7 +50,7 @@ func getData(urlString : String , page_no: Int){
         let fullStr = "https://image.tmdb.org/t/p/original"+urlString
         
         let url = URL(string: fullStr)
-        if let cachedVersion = imageCache.object(forKey: fullStr as NSString){
+        if let cachedVersion = imageCache.object(forKey: fullStr as NSString) {
             self.getImageDelegate!.imageReceived(data: cachedVersion as Data, indexPath: indexPath)
         
     }

@@ -30,7 +30,7 @@ class Actors: GetActorsDelegate {
     
     func receivingData(data: Data) {
         actors = []
-        print("data is received .......")
+       
         
         do {
             let dic = try JSONSerialization.jsonObject(with: data , options: []) as? NSDictionary

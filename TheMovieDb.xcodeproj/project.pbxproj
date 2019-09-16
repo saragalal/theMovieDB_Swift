@@ -22,13 +22,22 @@
 		84F274E6231B1A8A0090EFA8 /* Details_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */; };
 		84F274E8231B23F00090EFA8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F274E7231B23F00090EFA8 /* PhotoVC.swift */; };
 		923921192327980B008D6ECD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921182327980B008D6ECD /* HomeViewController.swift */; };
-		9239211C23279F4F008D6ECD /* GetActors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211B23279F4F008D6ECD /* GetActors.swift */; };
+		9239211C23279F4F008D6ECD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211B23279F4F008D6ECD /* Network.swift */; };
 		9239211E23279F71008D6ECD /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211D23279F71008D6ECD /* Actors.swift */; };
 		923921222327A86A008D6ECD /* GetActorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921202327A86A008D6ECD /* GetActorsDelegate.swift */; };
+		924A4C99232E782F000BFFF4 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4C98232E782F000BFFF4 /* HomePresenter.swift */; };
+		924A4C9B232E785C000BFFF4 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4C9A232E785C000BFFF4 /* HomeViewProtocol.swift */; };
+		924A4C9D232E7871000BFFF4 /* HomeModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4C9C232E7871000BFFF4 /* HomeModelProtocol.swift */; };
+		924A4CA3232E7976000BFFF4 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4CA2232E7976000BFFF4 /* HomeModel.swift */; };
+		924A4CA5232E7A59000BFFF4 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4CA4232E7A59000BFFF4 /* Actor.swift */; };
+		924A4CA7232E7A7A000BFFF4 /* ActorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4CA6232E7A7A000BFFF4 /* ActorDetails.swift */; };
 		92BC7FB12328CE9700C15EDD /* DetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB02328CE9700C15EDD /* DetailsCollectionViewCell.swift */; };
 		92BC7FB32328CEB100C15EDD /* DetailsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB22328CEB100C15EDD /* DetailsCollectionReusableView.swift */; };
-		92BC7FB523290D0100C15EDD /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB423290D0100C15EDD /* CellViewController.swift */; };
-		92BC7FB723290D2000C15EDD /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC7FB623290D2000C15EDD /* CellProtocol.swift */; };
+		92E9D319232F80E60081C71A /* HomePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9D318232F80E60081C71A /* HomePresenterProtocol.swift */; };
+		92E9D31B232FA0880081C71A /* HomeCellPresenterImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9D31A232FA0880081C71A /* HomeCellPresenterImplementation.swift */; };
+		92E9D322232FA1620081C71A /* homeCellViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9D321232FA1620081C71A /* homeCellViewProtocol.swift */; };
+		92E9D324232FA18A0081C71A /* homeCellPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9D323232FA18A0081C71A /* homeCellPresenterProtocol.swift */; };
+		92E9D326232FA1A40081C71A /* homeCellModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E9D325232FA1A40081C71A /* homeCellModelProtocol.swift */; };
 		92FC2562231E7FB40019A3E9 /* CALayer+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC2561231E7FB40019A3E9 /* CALayer+extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,13 +80,22 @@
 		84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details_Storyboard.storyboard; sourceTree = "<group>"; };
 		84F274E7231B23F00090EFA8 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		923921182327980B008D6ECD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9239211B23279F4F008D6ECD /* GetActors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActors.swift; sourceTree = "<group>"; };
+		9239211B23279F4F008D6ECD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9239211D23279F71008D6ECD /* Actors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actors.swift; sourceTree = "<group>"; };
 		923921202327A86A008D6ECD /* GetActorsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActorsDelegate.swift; sourceTree = "<group>"; };
+		924A4C98232E782F000BFFF4 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		924A4C9A232E785C000BFFF4 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
+		924A4C9C232E7871000BFFF4 /* HomeModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModelProtocol.swift; sourceTree = "<group>"; };
+		924A4CA2232E7976000BFFF4 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		924A4CA4232E7A59000BFFF4 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		924A4CA6232E7A7A000BFFF4 /* ActorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetails.swift; sourceTree = "<group>"; };
 		92BC7FB02328CE9700C15EDD /* DetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		92BC7FB22328CEB100C15EDD /* DetailsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionReusableView.swift; sourceTree = "<group>"; };
-		92BC7FB423290D0100C15EDD /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
-		92BC7FB623290D2000C15EDD /* CellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
+		92E9D318232F80E60081C71A /* HomePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterProtocol.swift; sourceTree = "<group>"; };
+		92E9D31A232FA0880081C71A /* HomeCellPresenterImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellPresenterImplementation.swift; sourceTree = "<group>"; };
+		92E9D321232FA1620081C71A /* homeCellViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCellViewProtocol.swift; sourceTree = "<group>"; };
+		92E9D323232FA18A0081C71A /* homeCellPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCellPresenterProtocol.swift; sourceTree = "<group>"; };
+		92E9D325232FA1A40081C71A /* homeCellModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCellModelProtocol.swift; sourceTree = "<group>"; };
 		92FC2561231E7FB40019A3E9 /* CALayer+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,11 +183,11 @@
 		8433BD392318034D00A52CBB /*  HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				8433BD3A2318037B00A52CBB /* HomeStoryBoard.storyboard */,
-				84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */,
-				923921182327980B008D6ECD /* HomeViewController.swift */,
-				92BC7FB423290D0100C15EDD /* CellViewController.swift */,
-				92BC7FB623290D2000C15EDD /* CellProtocol.swift */,
+				92E9D31C232FA0930081C71A /* HomeCell */,
+				924A4CA1232E792B000BFFF4 /* HomePresenter */,
+				924A4CA0232E78B7000BFFF4 /* HomeView */,
+				924A4C9F232E78AC000BFFF4 /* HomeModel */,
+				924A4C9E232E7890000BFFF4 /* HomeContract */,
 			);
 			path = " HomeScreen";
 			sourceTree = "<group>";
@@ -200,9 +218,90 @@
 			isa = PBXGroup;
 			children = (
 				923921202327A86A008D6ECD /* GetActorsDelegate.swift */,
-				9239211B23279F4F008D6ECD /* GetActors.swift */,
+				9239211B23279F4F008D6ECD /* Network.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		924A4C9E232E7890000BFFF4 /* HomeContract */ = {
+			isa = PBXGroup;
+			children = (
+				924A4C9C232E7871000BFFF4 /* HomeModelProtocol.swift */,
+				924A4C9A232E785C000BFFF4 /* HomeViewProtocol.swift */,
+				92E9D318232F80E60081C71A /* HomePresenterProtocol.swift */,
+			);
+			path = HomeContract;
+			sourceTree = "<group>";
+		};
+		924A4C9F232E78AC000BFFF4 /* HomeModel */ = {
+			isa = PBXGroup;
+			children = (
+				924A4CA2232E7976000BFFF4 /* HomeModel.swift */,
+			);
+			path = HomeModel;
+			sourceTree = "<group>";
+		};
+		924A4CA0232E78B7000BFFF4 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				8433BD3A2318037B00A52CBB /* HomeStoryBoard.storyboard */,
+				923921182327980B008D6ECD /* HomeViewController.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		924A4CA1232E792B000BFFF4 /* HomePresenter */ = {
+			isa = PBXGroup;
+			children = (
+				924A4C98232E782F000BFFF4 /* HomePresenter.swift */,
+			);
+			path = HomePresenter;
+			sourceTree = "<group>";
+		};
+		92E9D31C232FA0930081C71A /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				92E9D320232FA10B0081C71A /* HomeCellContract */,
+				92E9D31F232FA0F90081C71A /* HomeCellView */,
+				92E9D31E232FA0E20081C71A /* homeCellPresenter */,
+				92E9D31D232FA0CE0081C71A /* homeCellModel */,
+			);
+			path = HomeCell;
+			sourceTree = "<group>";
+		};
+		92E9D31D232FA0CE0081C71A /* homeCellModel */ = {
+			isa = PBXGroup;
+			children = (
+				924A4CA4232E7A59000BFFF4 /* Actor.swift */,
+				924A4CA6232E7A7A000BFFF4 /* ActorDetails.swift */,
+			);
+			path = homeCellModel;
+			sourceTree = "<group>";
+		};
+		92E9D31E232FA0E20081C71A /* homeCellPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				92E9D31A232FA0880081C71A /* HomeCellPresenterImplementation.swift */,
+			);
+			path = homeCellPresenter;
+			sourceTree = "<group>";
+		};
+		92E9D31F232FA0F90081C71A /* HomeCellView */ = {
+			isa = PBXGroup;
+			children = (
+				84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */,
+			);
+			path = HomeCellView;
+			sourceTree = "<group>";
+		};
+		92E9D320232FA10B0081C71A /* HomeCellContract */ = {
+			isa = PBXGroup;
+			children = (
+				92E9D321232FA1620081C71A /* homeCellViewProtocol.swift */,
+				92E9D323232FA18A0081C71A /* homeCellPresenterProtocol.swift */,
+				92E9D325232FA1A40081C71A /* homeCellModelProtocol.swift */,
+			);
+			path = HomeCellContract;
 			sourceTree = "<group>";
 		};
 		92FC255E231E763B0019A3E9 /* Utilites */ = {
@@ -346,19 +445,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				924A4C9D232E7871000BFFF4 /* HomeModelProtocol.swift in Sources */,
 				92BC7FB32328CEB100C15EDD /* DetailsCollectionReusableView.swift in Sources */,
 				9239211E23279F71008D6ECD /* Actors.swift in Sources */,
-				92BC7FB523290D0100C15EDD /* CellViewController.swift in Sources */,
+				924A4CA5232E7A59000BFFF4 /* Actor.swift in Sources */,
+				92E9D326232FA1A40081C71A /* homeCellModelProtocol.swift in Sources */,
 				92FC2562231E7FB40019A3E9 /* CALayer+extensions.swift in Sources */,
-				92BC7FB723290D2000C15EDD /* CellProtocol.swift in Sources */,
+				92E9D322232FA1620081C71A /* homeCellViewProtocol.swift in Sources */,
 				84CEFA0123191FAD00AF5C4C /* Works.swift in Sources */,
+				92E9D324232FA18A0081C71A /* homeCellPresenterProtocol.swift in Sources */,
+				92E9D319232F80E60081C71A /* HomePresenterProtocol.swift in Sources */,
 				84F274E4231B18A70090EFA8 /* DetailsViewController.swift in Sources */,
+				924A4C9B232E785C000BFFF4 /* HomeViewProtocol.swift in Sources */,
 				84F274E8231B23F00090EFA8 /* PhotoVC.swift in Sources */,
 				923921192327980B008D6ECD /* HomeViewController.swift in Sources */,
+				924A4CA3232E7976000BFFF4 /* HomeModel.swift in Sources */,
 				923921222327A86A008D6ECD /* GetActorsDelegate.swift in Sources */,
+				92E9D31B232FA0880081C71A /* HomeCellPresenterImplementation.swift in Sources */,
 				84CEFA03231939F000AF5C4C /* HomeTableViewCell.swift in Sources */,
-				9239211C23279F4F008D6ECD /* GetActors.swift in Sources */,
+				924A4C99232E782F000BFFF4 /* HomePresenter.swift in Sources */,
+				9239211C23279F4F008D6ECD /* Network.swift in Sources */,
 				8433BD3E2318199600A52CBB /* Person.swift in Sources */,
+				924A4CA7232E7A7A000BFFF4 /* ActorDetails.swift in Sources */,
 				8433BD0E2317F52000A52CBB /* ViewController.swift in Sources */,
 				8433BD0C2317F52000A52CBB /* AppDelegate.swift in Sources */,
 				92BC7FB12328CE9700C15EDD /* DetailsCollectionViewCell.swift in Sources */,
