@@ -646,61 +646,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomeView/HomeViewController.swift"
-            timestampString = "590328484.072709"
+            timestampString = "590330674.2813359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheMovieDb/ HomeScreen/HomeView/HomeViewController.swift"
-            timestampString = "590328484.07278"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheMovieDb.HomeViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "TheMovieDb"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sara.galal/Developer/XcodeProjects/theMovieDB/theMovieDB_Swift/TheMovieDb/%20HomeScreen/HomeView/HomeViewController.swift"
-                  timestampString = "590322802.461899"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "1297">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TheMovieDb.HomeViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "TheMovieDb"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sara.galal/Developer/XcodeProjects/theMovieDB/theMovieDB_Swift/TheMovieDb/%20HomeScreen/HomeView/HomeViewController.swift"
-                  timestampString = "590322802.4638129"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "1893">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -710,11 +662,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomeView/HomeViewController.swift"
-            timestampString = "590328484.072834"
+            timestampString = "590330674.281397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "searchBarSearchButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -726,11 +678,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomePresenter/HomePresenter.swift"
-            timestampString = "590328484.072886"
+            timestampString = "590330674.281448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "getList(urlString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -742,7 +694,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomeModel/HomeModel.swift"
-            timestampString = "590328484.072938"
+            timestampString = "590330674.281498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -758,11 +710,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomePresenter/HomePresenter.swift"
-            timestampString = "590328484.072987"
+            timestampString = "590330674.2815371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "getList(urlString:)"
             landmarkType = "7">
             <Locations>
@@ -774,11 +726,11 @@
                   moduleName = "TheMovieDb"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sara.galal/Developer/XcodeProjects/theMovieDB/theMovieDB_Swift/TheMovieDb/%20HomeScreen/HomePresenter/HomePresenter.swift"
-                  timestampString = "590323024.754301"
+                  timestampString = "590330580.807174"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
                   offsetFromSymbolStart = "127">
                </Location>
                <Location
@@ -789,14 +741,30 @@
                   moduleName = "TheMovieDb"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sara.galal/Developer/XcodeProjects/theMovieDB/theMovieDB_Swift/TheMovieDb/%20HomeScreen/HomePresenter/HomePresenter.swift"
-                  timestampString = "590323024.757067"
+                  timestampString = "590330580.81125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
                   offsetFromSymbolStart = "37">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheMovieDb/Network/Network.swift"
+            timestampString = "590330674.28158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "getData(urlString:page_no:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

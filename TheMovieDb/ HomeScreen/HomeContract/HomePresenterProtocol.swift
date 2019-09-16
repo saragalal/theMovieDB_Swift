@@ -17,4 +17,6 @@ protocol HomePresenterProtocol {
     func cancelSearchButtonIsPressed() ->()
     func removeDataFromTableView() ->()
     func loadNextPage() ->()
+    func cellISSelected(at cell: Int)
+    func sendImageToDetails(img: Data?)
 }

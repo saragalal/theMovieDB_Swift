@@ -9,12 +9,13 @@
 import Foundation
 
 class HomePresenterImplementaion: HomePresenterProtocol {
-    var viewProtocol: HomeViewProtocol?
+  var viewProtocol: HomeViewProtocol?
     var modelProtocol: HomeModelProtocol?
     var actorArrayURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066628c8f78bbb7be41943&language=en-US&sort_by=popularity.desc"
-  var searchURL = "https://api.themoviedb.org/3/search/person?api_key=facd2bc8ee066628c8f78bbb7be41943&query="
+    var searchURL = "https://api.themoviedb.org/3/search/person?api_key=facd2bc8ee066628c8f78bbb7be41943&query="
     var requestURL = ""
     var pageNo = 1
+    var detaisViewController : DetailsViewController?
    init (viewProtocol: HomeViewProtocol , modelProtocol: HomeModelProtocol){
         self.viewProtocol = viewProtocol
         self.modelProtocol = modelProtocol
@@ -79,4 +80,18 @@ class HomePresenterImplementaion: HomePresenterProtocol {
         }
     }
     
+    func cellISSelected(at cell: Int) {
+        if let nextView = self.viewProtocol?.instatiateDetailsView(){
+            self.detaisViewController = nextView
+            //// pass actor
+         // nextView.
+            self.viewProtocol?.naviagteToDetails(detailsView: nextView)
+        }
+    }
+    
+    func sendImageToDetails(img: Data?) {
+        ///pass img
+        ///
+       
+    }
 }

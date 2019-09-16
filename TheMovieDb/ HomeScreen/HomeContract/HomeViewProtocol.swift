@@ -10,4 +10,6 @@ import Foundation
 
 protocol HomeViewProtocol {
     func updateTableView()
+    func instatiateDetailsView() -> DetailsViewController?
+     func naviagteToDetails(detailsView: DetailsViewController)
 }

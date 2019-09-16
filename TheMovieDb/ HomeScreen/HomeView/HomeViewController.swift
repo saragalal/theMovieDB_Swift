@@ -39,30 +39,7 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         presenter?.viewIsReady()
     }
     
- 
-//
-//    func sendRequest(urlstring: String,no_page : Int) {
-//        print(urlstring)
-//        actorsModel.requestActorArray(urlStr: urlstring, page: no_page, complation: { result in
-//           // print("result" ,result!)
-//            if result != nil {
-//                self.persons.append(contentsOf: result!.actors)
-//
-//                DispatchQueue.main.async {
-//                    if self.tableView.refreshControl?.isRefreshing ?? false
-//                                {
-//                                    self.tableView.refreshControl?.endRefreshing()
-//                                }
-//
-//                    self.tableView.reloadData()
-//                }
-//            }
-//
-//        })
-//
-//
-//    }
-    
+
     @objc func refresh(sender:AnyObject) {
         URLCache.shared.removeAllCachedResponses()
         searchBar.resignFirstResponder()
@@ -136,14 +113,17 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
             indRow = indexPath.row
            cell.setCell(actor: (presenter?.getCellContaint(at: indexPath.row))!, indexPath: indexPath, tableview: self.tableView)
-            //cellVC.setDelegate(cell: cell, indexPath: indexPath, actor: (presenter?.getCellContaint(at: indexPath.row))!, table: self.tableView)
-         if indRow == (presenter?.getActorsListCount())! - 3 {
+          if indRow == (presenter?.getActorsListCount())! - 3 {
           presenter?.loadNextPage()
        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.cellISSelected(at: indexPath.row)
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView
+          presenter?.sendImageToDetails(img: selectedImageView?.image?.pngData())
 //        self.selectedPerson = persons[indexPath.row]
 //        let selectedCell = tableView.cellForRow(at: indexPath)
 //        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView
@@ -166,4 +146,12 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         return 150
     }
    
+    func instatiateDetailsView() -> DetailsViewController? {
+        let storyboard = UIStoryboard(name: "Details_Storyboard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
+        return vc
+     }
+    func naviagteToDetails(detailsView: DetailsViewController){
+        self.navigationController?.pushViewController(detailsView, animated: true)
+    }
 }
