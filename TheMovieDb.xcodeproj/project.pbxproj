@@ -16,8 +16,6 @@
 		8433BD212317F53600A52CBB /* TheMovieDbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433BD202317F53600A52CBB /* TheMovieDbTests.swift */; };
 		8433BD2C2317F53600A52CBB /* TheMovieDbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433BD2B2317F53600A52CBB /* TheMovieDbUITests.swift */; };
 		8433BD3B2318037B00A52CBB /* HomeStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8433BD3A2318037B00A52CBB /* HomeStoryBoard.storyboard */; };
-		8433BD3E2318199600A52CBB /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433BD3D2318199600A52CBB /* Person.swift */; };
-		84CEFA0123191FAD00AF5C4C /* Works.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEFA0023191FAD00AF5C4C /* Works.swift */; };
 		84CEFA03231939F000AF5C4C /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */; };
 		84F274E4231B18A70090EFA8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F274E3231B18A70090EFA8 /* DetailsViewController.swift */; };
 		84F274E6231B1A8A0090EFA8 /* Details_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */; };
@@ -25,7 +23,6 @@
 		88976FE3DC4C0712E35F6897 /* Pods_TheMovieDbUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98CCD7FD0BBB752938BDCC0 /* Pods_TheMovieDbUITests.framework */; };
 		923921192327980B008D6ECD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921182327980B008D6ECD /* HomeViewController.swift */; };
 		9239211C23279F4F008D6ECD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211B23279F4F008D6ECD /* Network.swift */; };
-		9239211E23279F71008D6ECD /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211D23279F71008D6ECD /* Actors.swift */; };
 		923921222327A86A008D6ECD /* GetActorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921202327A86A008D6ECD /* GetActorsDelegate.swift */; };
 		924A4C99232E782F000BFFF4 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4C98232E782F000BFFF4 /* HomePresenter.swift */; };
 		924A4C9B232E785C000BFFF4 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924A4C9A232E785C000BFFF4 /* HomeViewProtocol.swift */; };
@@ -89,15 +86,12 @@
 		8433BD2B2317F53600A52CBB /* TheMovieDbUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieDbUITests.swift; sourceTree = "<group>"; };
 		8433BD2D2317F53600A52CBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8433BD3A2318037B00A52CBB /* HomeStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryBoard.storyboard; sourceTree = "<group>"; };
-		8433BD3D2318199600A52CBB /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		84CEFA0023191FAD00AF5C4C /* Works.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Works.swift; sourceTree = "<group>"; };
 		84CEFA02231939F000AF5C4C /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		84F274E3231B18A70090EFA8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details_Storyboard.storyboard; sourceTree = "<group>"; };
 		84F274E7231B23F00090EFA8 /* SavePhotoViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoViewContoller.swift; sourceTree = "<group>"; };
 		923921182327980B008D6ECD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9239211B23279F4F008D6ECD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		9239211D23279F71008D6ECD /* Actors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actors.swift; sourceTree = "<group>"; };
 		923921202327A86A008D6ECD /* GetActorsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActorsDelegate.swift; sourceTree = "<group>"; };
 		924A4C98232E782F000BFFF4 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		924A4C9A232E785C000BFFF4 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
@@ -198,7 +192,6 @@
 				9239211A23279F27008D6ECD /* Network */,
 				92FC255E231E763B0019A3E9 /* Utilites */,
 				84F274E2231B17680090EFA8 /* DetailsScreen */,
-				8433BD3C2318197400A52CBB /* Model */,
 				8433BD392318034D00A52CBB /*  HomeScreen */,
 				8433BD0D2317F52000A52CBB /* ViewController.swift */,
 				8433BD0B2317F52000A52CBB /* AppDelegate.swift */,
@@ -238,16 +231,6 @@
 				924A4C9E232E7890000BFFF4 /* HomeContract */,
 			);
 			path = " HomeScreen";
-			sourceTree = "<group>";
-		};
-		8433BD3C2318197400A52CBB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8433BD3D2318199600A52CBB /* Person.swift */,
-				84CEFA0023191FAD00AF5C4C /* Works.swift */,
-				9239211D23279F71008D6ECD /* Actors.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		84F274E2231B17680090EFA8 /* DetailsScreen */ = {
@@ -680,7 +663,6 @@
 				924A4C9D232E7871000BFFF4 /* HomeModelProtocol.swift in Sources */,
 				92A0BD7E233216410095AC5B /* SavePhotoPresenterProtocol.swift in Sources */,
 				92BC7FB32328CEB100C15EDD /* DetailsCollectionReusableView.swift in Sources */,
-				9239211E23279F71008D6ECD /* Actors.swift in Sources */,
 				924A4CA5232E7A59000BFFF4 /* Actor.swift in Sources */,
 				92A0BD72233215480095AC5B /* SavePhotoPresenter.swift in Sources */,
 				92A0BD7C233216200095AC5B /* SavePhotoModelProtocol.swift in Sources */,
@@ -688,7 +670,6 @@
 				92FC2562231E7FB40019A3E9 /* CALayer+extensions.swift in Sources */,
 				92A97C652330BDD400176B81 /* DetailsModelProtocol.swift in Sources */,
 				92E9D322232FA1620081C71A /* homeCellViewProtocol.swift in Sources */,
-				84CEFA0123191FAD00AF5C4C /* Works.swift in Sources */,
 				92E9D324232FA18A0081C71A /* homeCellPresenterProtocol.swift in Sources */,
 				92E9D319232F80E60081C71A /* HomePresenterProtocol.swift in Sources */,
 				84F274E4231B18A70090EFA8 /* DetailsViewController.swift in Sources */,
@@ -705,7 +686,6 @@
 				924A4C99232E782F000BFFF4 /* HomePresenter.swift in Sources */,
 				92A97C632330BDBE00176B81 /* DetailsViewProtocol.swift in Sources */,
 				9239211C23279F4F008D6ECD /* Network.swift in Sources */,
-				8433BD3E2318199600A52CBB /* Person.swift in Sources */,
 				924A4CA7232E7A7A000BFFF4 /* ActorDetails.swift in Sources */,
 				8433BD0E2317F52000A52CBB /* ViewController.swift in Sources */,
 				92A0BD742332155A0095AC5B /* SavePhotoViewProtocol.swift in Sources */,
