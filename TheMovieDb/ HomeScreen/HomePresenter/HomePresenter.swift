@@ -83,15 +83,11 @@ class HomePresenterImplementaion: HomePresenterProtocol {
     func cellISSelected(at cell: Int) {
         if let nextView = self.viewProtocol?.instatiateDetailsView(){
             self.detaisViewController = nextView
-            //// pass actor
-         // nextView.
-            self.viewProtocol?.naviagteToDetails(detailsView: nextView)
+            if let actorSelected = modelProtocol?.returnActor(at: cell){
+                let detailsModel: DetailsModelProtocol = DetailsModel(actor: actorSelected)
+                nextView.detailsPresenter = DetailsPresenterImplementation(detailsView: nextView, detailsModel: detailsModel)
+                self.viewProtocol?.naviagteToDetails(detailsView: nextView)
+            }
         }
-    }
-    
-    func sendImageToDetails(img: Data?) {
-        ///pass img
-        ///
-       
     }
 }

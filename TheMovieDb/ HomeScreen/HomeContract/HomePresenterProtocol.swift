@@ -18,5 +18,4 @@ protocol HomePresenterProtocol {
     func removeDataFromTableView() ->()
     func loadNextPage() ->()
     func cellISSelected(at cell: Int)
-    func sendImageToDetails(img: Data?)
 }

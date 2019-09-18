@@ -642,7 +642,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomeView/HomeViewController.swift"
@@ -674,11 +674,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomePresenter/HomePresenter.swift"
-            timestampString = "590330674.281448"
+            timestampString = "590402723.222528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -690,11 +690,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomeModel/HomeModel.swift"
-            timestampString = "590330674.281498"
+            timestampString = "590402723.222945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -706,11 +706,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomePresenter/HomePresenter.swift"
-            timestampString = "590330674.2815371"
+            timestampString = "590402723.2230051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -719,14 +719,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TheMovieDb.HomePresenterImplementaion.getList(urlString: Swift.String) -&gt; ()"
                   moduleName = "TheMovieDb"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sara.galal/Developer/XcodeProjects/theMovieDB/theMovieDB_Swift/TheMovieDb/%20HomeScreen/HomePresenter/HomePresenter.swift"
-                  timestampString = "590330580.807174"
+                  timestampString = "590400525.24628"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -734,14 +734,14 @@
                   offsetFromSymbolStart = "127">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Bool) -&gt; () in TheMovieDb.HomePresenterImplementaion.getList(urlString: Swift.String) -&gt; ()"
                   moduleName = "TheMovieDb"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sara.galal/Developer/XcodeProjects/theMovieDB/theMovieDB_Swift/TheMovieDb/%20HomeScreen/HomePresenter/HomePresenter.swift"
-                  timestampString = "590330580.81125"
+                  timestampString = "590400525.247946"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"

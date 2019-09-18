@@ -121,9 +121,9 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.cellISSelected(at: indexPath.row)
-        let selectedCell = tableView.cellForRow(at: indexPath)
-        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView
-          presenter?.sendImageToDetails(img: selectedImageView?.image?.pngData())
+//        let selectedCell = tableView.cellForRow(at: indexPath)
+//        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView
+//          presenter?.sendImageToDetails(img: selectedImageView?.image?.pngData())
 //        self.selectedPerson = persons[indexPath.row]
 //        let selectedCell = tableView.cellForRow(at: indexPath)
 //        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView

@@ -7,16 +7,16 @@
 //
 
 import UIKit
-
+import SDWebImage
 class DetailsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     
-    func setImageCell (img: UIImage){
+    func setImageCell (urlStr: String){
         self.imgView.layer.masksToBounds = false
         self.imgView.layer.cornerRadius = 5
         self.imgView.clipsToBounds = true
-        self.imgView.image = img
+        imgView.sd_setImage(with: URL(string: urlStr), placeholderImage: UIImage(named: "noimage.png"))
     
     }
 }

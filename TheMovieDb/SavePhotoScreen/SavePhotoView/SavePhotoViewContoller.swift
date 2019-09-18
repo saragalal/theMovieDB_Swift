@@ -7,32 +7,41 @@
 //
 
 import UIKit
-
-class PhotoVC: UIViewController {
-
-  
-    var imageSave :UIImage!
-    
+import SDWebImage
+class SavePhotoViewContoller: UIViewController ,SavePhotoViewProtocol{
+   
     @IBOutlet weak var imgView: UIImageView!
+    var savePhotoPresenter: SavePhotoPresenterProtocol?
+    var imgUrlString: String = ""
+    var imageSave: UIImage?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imgView.image = imageSave
+        if let urlString = savePhotoPresenter?.getImgUrlFromModel() {
+             imgUrlString = urlString
+        }
+       imgView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/original"+imgUrlString), placeholderImage: UIImage(named: "noimage.png"))
         // Do any additional setup after loading the view.
     }
     
     @IBAction func save(_ sender: Any) {
-        UIImageWriteToSavedPhotosAlbum(imageSave, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        imageSave = imgView.image
+        savePhotoPresenter?.saveButtonIsPressed()
     }
+    func savePhoto() {
+        if let img = imageSave {
+            UIImageWriteToSavedPhotosAlbum(img, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+    }
+    
     @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Add image to Library
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
-            // we got back an error!
             showAlertWith(title: "Save error", message: error.localizedDescription)
         } else {
             showAlertWith(title: "Saved!", message: "Your image has been saved to your photos.")

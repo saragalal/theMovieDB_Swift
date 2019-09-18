@@ -18,7 +18,6 @@ class Actor : GetImageDelegate, HomeCellModelProtocol{
     var profile_path : String?
     var popularity : Double?
     var updateImgView : ((Data, IndexPath) -> ())?
-    var getImageUrls : (([String]) -> ())?
     var network = Network()
     
     init() {
@@ -29,6 +28,14 @@ class Actor : GetImageDelegate, HomeCellModelProtocol{
         popularity = 0.0
         network.getImageDelegate = self
        
+    }
+    init(actor: Actor){
+        self.id = actor.id
+        self.name = actor.name
+        self.knowFor = actor.knowFor
+        self.profile_path = actor.profile_path
+        self.popularity = actor.popularity
+        network.getImageDelegate = self
     }
     
     func initWithDictionary(dict : NSDictionary){
@@ -51,35 +58,6 @@ class Actor : GetImageDelegate, HomeCellModelProtocol{
         
     }
     
-//    func requestAllImage(imgUrl: String ,id: Int ,completion: @escaping (_ urlArray: [String]?) -> () ){
-//        network.getActorImages(urlString: imgUrl, id: id)
-//        getImageUrls = completion
-//    }
-//
-//    func imgurlReceived(data: Data?) {
-//        do{
-//            let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
-//
-//            let results = dic?["profiles"] as? [NSDictionary]
-//            if results != nil {
-//                var imagesUrl = [String]()
-//                for result in results! {
-//                    let str = result["file_path"] as? String
-//                    if str != nil {
-//                        imagesUrl.append(str!)
-//
-//                    }
-//                }
-//
-//                self.getImageUrls?(imagesUrl)
-//           }
-//        } catch {
-//            print("json error \(error)")
-//        }
-//
-//
-//    }
-//
     func getName() -> String {
         if let actorName = self.name {
            return actorName

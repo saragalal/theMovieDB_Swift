@@ -36,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="113" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nFZ-DG-K8y">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingImage" translatesAutoresizingMaskIntoConstraints="NO" id="nFZ-DG-K8y">
                                                     <rect key="frame" x="5" y="0.0" width="103" height="95"/>
                                                     <gestureRecognizers/>
                                                 </imageView>
@@ -72,7 +72,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bVy-AL-uLs">
+                                        <imageView clipsSubviews="YES" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingImage" translatesAutoresizingMaskIntoConstraints="NO" id="bVy-AL-uLs">
                                             <rect key="frame" x="30" y="58" width="315" height="210"/>
                                             <gestureRecognizers/>
                                             <constraints>
@@ -167,7 +167,7 @@
         <!--PHOTO-->
         <scene sceneID="gZB-5V-Noc">
             <objects>
-                <viewController id="aDV-uR-ZOS" customClass="PhotoVC" customModule="TheMovieDb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavePhotoViewController" id="aDV-uR-ZOS" customClass="SavePhotoViewContoller" customModule="TheMovieDb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DdN-j8-DUU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,5 +256,6 @@
     </scenes>
     <resources>
         <image name="back_ic_ar-min" width="7.5" height="12.5"/>
+        <image name="loadingImage" width="512" height="512"/>
     </resources>
 </document>
