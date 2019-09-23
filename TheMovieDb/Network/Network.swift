@@ -26,21 +26,28 @@ func getData(urlString : String , page_no: Int){
         self.getActorDelegate!.receivingData(data: reponseCaching.object(forKey: urlStr as NSString)! as Data)
     
     }else {
-    let url :URL = URL(string: urlStr)!
-    
-    let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
-        do{
-                             if self.getActorDelegate != nil {
-                    self.reponseCaching.setObject(data! as NSData, forKey: urlStr as NSString)
-                 self.getActorDelegate!.receivingData(data: data)
-                }
-
-           
-        }
-      
+        let url :URL = URL(string: urlStr)!
         
-    }
-    task.resume()
+        let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
+            print("\(data)")
+            if error == nil {
+                do{
+                    if self.getActorDelegate != nil {
+                        self.reponseCaching.setObject(data! as NSData, forKey: urlStr as NSString)
+                        do {
+                            let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
+                            print("dic resposne \(dic!)")
+                        }catch {
+                            
+                        }
+                        self.getActorDelegate!.receivingData(data: data)
+                    }
+                }
+            } else {
+                 self.getActorDelegate!.receivingData(data: nil)
+            }
+        }
+        task.resume()
     }
 }
     

@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import XCTest
 @testable import TheMovieDb
-class ModelMock: HomeModelProtocol {
+class ModelMock: HomeModelProtocol  {
     var actorsList = [Actor?]()
     var jsonFile = ""
+    
     func requestActorList(urlStr: String, page: Int, completion: @escaping (Bool) -> ()) {
         let testBundle = Bundle(for: type(of: self))
         let path = testBundle.path(forResource: jsonFile, ofType: "json")
@@ -18,7 +20,6 @@ class ModelMock: HomeModelProtocol {
         if let dataMock = data {
             do {
                 let dic = try JSONSerialization.jsonObject(with: dataMock , options: []) as? NSDictionary
-                
                 if dic != nil {
                     let results = dic?["results"] as? [NSDictionary]
                     
@@ -37,7 +38,10 @@ class ModelMock: HomeModelProtocol {
                             
                             actorsList.append(person)
                         }
+                       completion(true)
+                    }else {
                         
+                        completion(false)
                     }
                 }
             }
@@ -45,10 +49,10 @@ class ModelMock: HomeModelProtocol {
                 print("json error \(error)")
             }
         } else {
-            actorsList = []
-           
+            
+           completion(false)
         }
-         completion(true)
+        
     }
     
     func returnArrayCount() -> Int {
@@ -63,7 +67,9 @@ class ModelMock: HomeModelProtocol {
     }
     
     func removeData() {
+        XCTAssert(true, "Calling removeData")
         actorsList = []
+       XCTAssertEqual(self.actorsList.count, 0,"Array should be empty")
     }
     
     

@@ -27,46 +27,44 @@ class HomeModel: GetActorsDelegate,HomeModelProtocol {
         networkDelegate.getData(urlString: urlStr, page_no: page)
         listReceived = completion
     }
-   func requestActorArray (urlStr: String, page: Int, complation: @escaping (_ result: HomeModel?) -> ()){
-        networkDelegate.getData(urlString: urlStr, page_no: page)
-        updateUI = complation
-    }
-    
+  
     func receivingData(data: Data?) {
         if data != nil {
-        do {
-            let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
-            //                print("dic resposne \(dic!)")
-            if dic != nil {
-                let results = dic?["results"] as? [NSDictionary]
-                
-                if (results != nil){
-                    for result in results!{
-                        let person = Actor()
-                        person.initWithDictionary(dict: result)
-                        let works = result["known_for"] as? [NSDictionary]
-                        
-                        for work in works ?? [] {
-                            let w = ActorDetails()
-                            w.initWithDictionary(dict: work)
-                            person.knowFor.append(w)
+            do {
+                let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
+                         print("dic resposne \(dic!)")
+                if dic != nil {
+                    let results = dic?["results"] as? [NSDictionary]
+                    
+                    if (results != nil){
+                        for result in results!{
+                            let person = Actor()
+                            person.initWithDictionary(dict: result)
+                            let works = result["known_for"] as? [NSDictionary]
+                            
+                            for work in works ?? [] {
+                                let w = ActorDetails()
+                                w.initWithDictionary(dict: work)
+                                person.knowFor.append(w)
+                            }
+                           self.actorsList.append(person)
                         }
-                        
-                        self.actorsList.append(person)
+                        let receivedActor = HomeModel()
+                        receivedActor.actorsList = self.actorsList
+                         self.listReceived?(true)
+                    }else {
+                       self.listReceived?(false)
                     }
-                    let receivedActor = HomeModel()
-                    receivedActor.actorsList = self.actorsList
                 }
             }
-        }
-            
-        catch {
-            print("json error \(error)")
-        }
+                
+            catch {
+                print("json error \(error)")
+            }
         }else {
-            actorsList = []
+           self.listReceived?(false)
         }
-        self.listReceived?(true)
+       
     }
 
 func returnArrayCount() -> Int {
