@@ -60,6 +60,7 @@ class HomePresenterImplementaion: HomePresenterProtocol {
     }
     
     func refeshList() {
+        removeDataFromTableView()
         self.pageNo = 1
         requestURL = actorArrayURL
         getList(urlString: requestURL)

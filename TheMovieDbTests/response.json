@@ -1,0 +1,92 @@
+
+{
+"results":[
+{ "popularity":65.455,
+"known_for_department":"Acting",
+"gender":1,
+"id":2226464,
+"profile_path":"\/oPv8bTakgrrzScfoc5cSVtyao21.jpg",
+"adult":false,
+"known_for":[
+{
+"original_name":"Singardaan",
+"id":86184,
+"origin_country":[
+"IN"
+],
+"name":"Singardaan",
+"backdrop_path":"\/9w4JfVD19yb32V1i4ojNNcnOkxU.jpg",
+"original_language":"hi",
+"first_air_date":"2019-01-20",
+"genre_ids":[
+18
+],
+"vote_count":0,
+"media_type":"tv",
+"vote_average":0,
+"overview":"Gupta Ji falls in love with Shabnam, a prostitute. She has a makeup box. When Shabnam dies, Guptaji takes the box to his home. The box turns his wife and daughter into a prostitute. How he will save his wife and daughter and how would he get away with the box? Watch this tale, full of magic, lust and suspense, Singardaan.",
+"poster_path":"\/bcZoArY3jGndL9pt1pTpCOWR2DP.jpg"
+}
+],
+"name":"Ankita Dave" },
+{ "popularity":38.276,
+"known_for_department":"Acting",
+"gender":2,
+"id":18918,
+"profile_path":"\/kuqFzlYMc2IrsOyPznMd1FroeGq.jpg",
+"adult":false,
+"known_for":[
+{
+"release_date":"2017-12-20",
+"id":353486,
+"vote_count":7626,
+"video":false,
+"media_type":"movie",
+"vote_average":6.7,
+"title":"Jumanji: Welcome to the Jungle",
+"genre_ids":[
+28,
+12,
+35,
+14
+],
+"original_title":"Jumanji: Welcome to the Jungle",
+"original_language":"en",
+"adult":false,
+"backdrop_path":"\/rz3TAyd5kmiJmozp3GUbYeB5Kep.jpg",
+"overview":"The tables are turned as four teenagers are sucked into Jumanji's world - pitted against rhinos, black mambas and an endless variety of jungle traps and puzzles. To survive, they'll play as characters from the game.",
+"poster_path":"\/22hqf97LadMvkd4zDi3Bq25xSqD.jpg"
+
+}
+],
+"name":"Dwayne Johnson" },
+{ "popularity":34.082,
+"known_for_department":"Acting",
+"gender":2,
+"id":6384,
+"profile_path":"\/bOlYWhVuOiU6azC4Bw6zlXZ5QTC.jpg",
+"adult":false,
+"known_for":[
+{
+"release_date":"1999-03-30",
+"id":603,
+"vote_count":15132,
+"video":false,
+"media_type":"movie",
+"vote_average":8.1,
+"title":"The Matrix",
+"genre_ids":[
+28,
+878
+],
+"original_title":"The Matrix",
+"original_language":"en",
+"adult":false,
+"backdrop_path":"\/icmmSD4vTTDKOq2vvdulafOGw93.jpg",
+"overview":"Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
+"poster_path":"\/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg" }],
+"name":"Keanu Reeves"}
+]
+}
+
+

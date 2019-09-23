@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol GetActorsDelegate {
-    func receivingData(data: Data)
+    func receivingData(data: Data?)
     
 }
 

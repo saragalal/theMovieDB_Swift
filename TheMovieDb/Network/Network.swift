@@ -30,13 +30,12 @@ func getData(urlString : String , page_no: Int){
     
     let task = URLSession.shared.dataTask(with: url) {(data ,response ,error) in
         do{
-            if (data != nil){
-                 if self.getActorDelegate != nil {
+                             if self.getActorDelegate != nil {
                     self.reponseCaching.setObject(data! as NSData, forKey: urlStr as NSString)
-                 self.getActorDelegate!.receivingData(data: data!)
+                 self.getActorDelegate!.receivingData(data: data)
                 }
 
-            }
+           
         }
       
         

@@ -45,11 +45,9 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         searchBar.resignFirstResponder()
         searchBar.endEditing(true)
         searchBar.text = ""
-        presenter?.removeDataFromTableView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-             self.presenter?.refeshList()
-        }
-    }
+        //presenter?.removeDataFromTableView()
+        self.presenter?.refeshList()
+  }
     
    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchWasDone = true

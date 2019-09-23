@@ -100,10 +100,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="6" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SS7-K8-yOw">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="6" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SS7-K8-yOw">
                                             <rect key="frame" x="127" y="331.5" width="240" height="94.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </string>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -132,7 +131,7 @@
                                     <connections>
                                         <outlet property="labeltype" destination="Res-ue-DHQ" id="veY-2F-JZP"/>
                                         <outlet property="nameLB" destination="GaW-cC-gGS" id="gHs-ie-7Fm"/>
-                                        <outlet property="overviewLb" destination="FI6-2j-ipX" id="foY-r2-Dco"/>
+                                        <outlet property="overviewText" destination="SS7-K8-yOw" id="ZcQ-mq-7Yi"/>
                                         <outlet property="profileImage" destination="bVy-AL-uLs" id="bKC-ns-Lhe"/>
                                         <outlet property="typeLb" destination="Yfk-Q2-upE" id="V7l-rO-cHb"/>
                                     </connections>
@@ -251,7 +250,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bjf-0q-waU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="12.143928035982009"/>
+            <point key="canvasLocation" x="1804" y="12"/>
         </scene>
     </scenes>
     <resources>

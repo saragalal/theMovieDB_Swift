@@ -32,10 +32,10 @@ class HomeModel: GetActorsDelegate,HomeModelProtocol {
         updateUI = complation
     }
     
-    func receivingData(data: Data) {
-       
+    func receivingData(data: Data?) {
+        if data != nil {
         do {
-            let dic = try JSONSerialization.jsonObject(with: data , options: []) as? NSDictionary
+            let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
             //                print("dic resposne \(dic!)")
             if dic != nil {
                 let results = dic?["results"] as? [NSDictionary]
@@ -56,8 +56,6 @@ class HomeModel: GetActorsDelegate,HomeModelProtocol {
                     }
                     let receivedActor = HomeModel()
                     receivedActor.actorsList = self.actorsList
-                    //self.updateUI?(receivedActor)
-                    self.listReceived?(true)
                 }
             }
         }
@@ -65,6 +63,10 @@ class HomeModel: GetActorsDelegate,HomeModelProtocol {
         catch {
             print("json error \(error)")
         }
+        }else {
+            actorsList = []
+        }
+        self.listReceived?(true)
     }
 
 func returnArrayCount() -> Int {

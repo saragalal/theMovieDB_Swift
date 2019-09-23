@@ -13,7 +13,8 @@ class DetailsCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var nameLB: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var typeLb: UILabel!
-    @IBOutlet weak var overviewLb: UILabel!
+   
+    @IBOutlet weak var overviewText: UITextView!
     @IBOutlet weak var labeltype: UILabel!
 
      func setView (actor: DetailsModel) {
@@ -29,7 +30,14 @@ class DetailsCollectionReusableView: UICollectionReusableView {
         
         if let actorType = actor.knowFor[0]!.type {
             labeltype.text = actorType
-        }
+        }else {
+            typeLb.text = "no type available"
+            }
+       if let actorOverview = actor.knowFor[0]!.overview{
+                overviewText.text = "\(actorOverview)"
+       } else {
+        overviewText.text = "noi overview available"
+            }
         }
         if let actorProfilePath = actor.profile_path {
             self.profileImage.layer.masksToBounds = false
