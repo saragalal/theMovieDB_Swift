@@ -9,7 +9,7 @@
 import Foundation
 @testable import TheMovieDb
 class ModelMock: HomeModelProtocol {
-    var actorsList = [Actor]()
+    var actorsList = [Actor?]()
     var jsonFile = ""
     func requestActorList(urlStr: String, page: Int, completion: @escaping (Bool) -> ()) {
         let testBundle = Bundle(for: type(of: self))
@@ -55,8 +55,11 @@ class ModelMock: HomeModelProtocol {
         return actorsList.count
     }
     
-    func returnActor(at index: Int) -> Actor {
-        return actorsList[index]
+    func returnActor(at index: Int) -> Actor? {
+        if let actorSelected = actorsList[index] {
+        return actorSelected
+        }
+        return nil
     }
     
     func removeData() {

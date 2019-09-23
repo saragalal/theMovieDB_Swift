@@ -11,7 +11,7 @@ import Foundation
 
 class HomeModel: GetActorsDelegate,HomeModelProtocol {
     
-    var actorsList = [Actor]()
+    var actorsList = [Actor?]()
     
     var networkDelegate = Network()
     
@@ -73,9 +73,13 @@ func returnArrayCount() -> Int {
         return actorsList.count
     }
     
-func returnActor(at index: Int) -> Actor {
-        return actorsList[index]
+    func returnActor(at index: Int) -> Actor? {
+        if let actorSelected = actorsList[index] {
+            return actorSelected
+        }
+        return nil
     }
+    
     func removeData() {
         actorsList = []
     }

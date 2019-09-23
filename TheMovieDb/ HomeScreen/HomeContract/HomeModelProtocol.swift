@@ -11,6 +11,6 @@ import Foundation
 protocol HomeModelProtocol {
     func requestActorList(urlStr: String, page: Int, completion: @escaping (_ result: Bool) -> ())
     func returnArrayCount() -> Int
-    func returnActor(at index: Int) -> Actor
+    func returnActor(at index: Int) -> Actor?
     func removeData() ->()
 }

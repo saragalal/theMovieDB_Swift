@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDb/ HomeScreen/HomePresenter/HomePresenter.swift"
-            timestampString = "590918431.3624279"
+            timestampString = "590921126.408375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -99,7 +99,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDbTests/ModelMock.swift"
-            timestampString = "590916174.634492"
+            timestampString = "590921126.408432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -115,7 +115,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDbTests/HomePresenterTest.swift"
-            timestampString = "590918431.362527"
+            timestampString = "590921126.408492"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
@@ -131,7 +131,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheMovieDbTests/HomePresenterTest.swift"
-            timestampString = "590918431.362582"
+            timestampString = "590921126.408905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -170,6 +170,22 @@
                   offsetFromSymbolStart = "103">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheMovieDbTests/ModelMock.swift"
+            timestampString = "590921126.410234"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "returnArrayCount()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
