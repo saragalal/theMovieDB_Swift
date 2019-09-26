@@ -17,7 +17,6 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
     let baseURL = "https://api.themoviedb.org/3/person/popular?api_key=facd2bc8ee066628c8f78bbb7be41943&language=en-US&sort_by=popularity.desc"
     
     var searchUrl = "https://api.themoviedb.org/3/search/person?api_key=facd2bc8ee066628c8f78bbb7be41943&query="
-    var indRow = 0
     var searchWasDone = false
     var imgProfile: UIImage?
     var searchKey :String? = ""
@@ -29,9 +28,12 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.dataSource = self
         tableView.delegate = self
+        //tableView.isAccessibilityElement = true
+        tableView.accessibilityIdentifier = "HomeTableViewIdentifier"
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.accessibilityIdentifier = "refresh_control_label"
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Refresh")
         tableView.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
         self.tableView.addSubview(self.tableView.refreshControl!) // not required when using UITableViewController
@@ -45,7 +47,6 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
         searchBar.resignFirstResponder()
         searchBar.endEditing(true)
         searchBar.text = ""
-        //presenter?.removeDataFromTableView()
         self.presenter?.refeshList()
   }
     
@@ -109,39 +110,28 @@ class HomeViewController: UIViewController , UITableViewDelegate ,UITableViewDat
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
-            indRow = indexPath.row
-           cell.setCell(actor: (presenter?.getCellContaint(at: indexPath.row))!, indexPath: indexPath, tableview: self.tableView)
-          if indRow == (presenter?.getActorsListCount())! - 3 {
-          presenter?.loadNextPage()
-       }
-        return cell
+     //cell.isAccessibilityElement = true
+        cell.accessibilityIdentifier = "myCell_\(indexPath.row)"
+       cell.setCell(actor: (presenter?.getCellContaint(at: indexPath.row))!, indexPath: indexPath, tableview: self.tableView)
+    return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.cellISSelected(at: indexPath.row)
-//        let selectedCell = tableView.cellForRow(at: indexPath)
-//        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView
-//          presenter?.sendImageToDetails(img: selectedImageView?.image?.pngData())
-//        self.selectedPerson = persons[indexPath.row]
-//        let selectedCell = tableView.cellForRow(at: indexPath)
-//        let selectedImageView = selectedCell?.viewWithTag(1) as? UIImageView
-//        self.imgProfile = selectedImageView?.image
-//        print("array", persons[indexPath.row].knowFor)
-//        performSegue(withIdentifier: "detSegue", sender: self)
-        
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        if segue.identifier == "detSegue"{
-//            let nav = segue.destination as! UINavigationController
-//            let vc = nav.topViewController as! DetailsViewController
-//            vc.person = selectedPerson
-//           vc.profile = self.imgProfile
-//        }
-    }
+}
+
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom == height - 5 {
+            print(" you reached end of the table")
+             presenter?.loadNextPage()
+        }
     }
    
     func instatiateDetailsView() -> DetailsViewController? {

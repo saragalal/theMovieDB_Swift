@@ -139,6 +139,9 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                        <accessibility key="accessibilityConfiguration" identifier="DetailsViewIdentifier">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <viewLayoutGuide key="safeArea" id="H6Y-h3-QNN"/>
                     </view>
                     <navigationItem key="navigationItem" title="DETAILS" id="x7L-12-w7f">

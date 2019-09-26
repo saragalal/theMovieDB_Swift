@@ -21,23 +21,8 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        //getImages()
-        //getImages()
+        collectionView.accessibilityIdentifier = "DetailsCollectionViewIdentifier"
         detailsPresenter?.detailsInit()
-//        if (person.id != nil) {
-//            person.requestAllImage(imgUrl: baseUrl, id: person.id! ,completion:{ urlArray in
-//                if urlArray != nil {
-//                    self.imagesUrl = urlArray!
-//                    print("urls   ",urlArray!)
-//                    DispatchQueue.main.async {
-//                        self.collectionView.reloadData()
-//                    }
-//                }
-//
-//            })
-//        }
-        
-      
     }
     func updateCollectionView() {
         DispatchQueue.main.async {
@@ -63,43 +48,23 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         detailsPresenter?.cellSelected(at: indexPath.row)
-//       let cell = self.collectionView.cellForItem(at: indexPath)
-//
-//        let imgview = cell?.viewWithTag(1) as? UIImageView
-//
-//        selctedImage = imgview?.image
-//        performSegue(withIdentifier: "saveSegue", sender: self)
-    }
+ }
     
     @IBAction func slectProfile(_ sender: Any) {
         detailsPresenter?.profileImageIsSelected()
-       // selctedImage = profile
-        
-       // performSegue(withIdentifier: "saveSegue", sender: self)
-        
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "saveSegue"{
-//            let navcontroller = segue.destination as! UINavigationController
-//            let vc = navcontroller.topViewController as! PhotoVC
-//
-//            vc.imageSave = selctedImage
-//
-//        }
-//    }
+   }
+
    
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if (kind == UICollectionView.elementKindSectionHeader) {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as? DetailsCollectionReusableView
+            headerView?.accessibilityIdentifier = "myReusableView"
             if let actor = detailsPresenter?.getCurrentActor(){
                 if headerView != nil {
-                    // headerView?.setProfImage(img: profile)
                     headerView?.setView(actor: actor)
                 }
             }

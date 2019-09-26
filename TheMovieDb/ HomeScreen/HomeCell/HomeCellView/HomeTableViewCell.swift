@@ -20,7 +20,7 @@ class HomeTableViewCell: UITableViewCell ,HomeCellViewProtocol{
     var currentCell: HomeTableViewCell?
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        nameLabel.accessibilityIdentifier = "CellNameIdentifier"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

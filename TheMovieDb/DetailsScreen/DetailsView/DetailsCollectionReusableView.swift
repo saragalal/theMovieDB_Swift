@@ -17,6 +17,10 @@ class DetailsCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var overviewText: UITextView!
     @IBOutlet weak var labeltype: UILabel!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        nameLB.accessibilityIdentifier = "DetailsNameIdentifier"
+    }
      func setView (actor: DetailsModel) {
         if let actorName = actor.name{
             nameLB.text = actorName
