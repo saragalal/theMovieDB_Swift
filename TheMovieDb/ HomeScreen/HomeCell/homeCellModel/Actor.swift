@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Actor : GetImageDelegate, HomeCellModelProtocol{
+class Actor :Codable, GetImageDelegate, HomeCellModelProtocol{
     
     
     var id :Int?
@@ -46,6 +46,30 @@ class Actor : GetImageDelegate, HomeCellModelProtocol{
         popularity = dict["popularity"] as? Double
         
     }
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case knownFor = "known_for"
+        case popularity = "popularity"
+        case profile_path = "profile_path"
+    }
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decodeIfPresent(String.self, forKey: .name)
+        id = try container.decodeIfPresent(Int.self, forKey: .id)
+        knowFor = try container.decodeIfPresent([ActorDetails?].self, forKey: .knownFor)!
+        popularity = try container.decodeIfPresent(Double.self, forKey: .popularity)
+        profile_path = try container.decodeIfPresent(String.self, forKey: .profile_path)
+        network.getImageDelegate = self
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(id, forKey: .id)
+        try container.encode(knowFor, forKey: .knownFor)
+        try container.encode(popularity, forKey: .popularity)
+        try container.encode(profile_path, forKey: .profile_path)
+    }
     
     func requestImage(imgUrl: String ,indexPath: IndexPath, completion: @escaping (_ data: Data?, _ indexPath: IndexPath) -> ()){
         network.getImage(urlString: imgUrl, indexPath: indexPath)
@@ -77,3 +101,4 @@ class Actor : GetImageDelegate, HomeCellModelProtocol{
         return ""
     }
 }
+

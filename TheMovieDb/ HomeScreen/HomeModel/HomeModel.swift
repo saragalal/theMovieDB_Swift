@@ -9,7 +9,7 @@
 import Foundation
 
 
-class HomeModel: GetActorsDelegate,HomeModelProtocol {
+class HomeModel: Codable, GetActorsDelegate,HomeModelProtocol {
     
     var actorsList = [Actor?]()
     
@@ -19,8 +19,19 @@ class HomeModel: GetActorsDelegate,HomeModelProtocol {
     var listReceived : ((Bool)-> ())?
     
     init() {
+       networkDelegate.getActorDelegate = self
+    }
+    enum ResultKey: String, CodingKey {
+        case results = "results"
+    }
+    required init(from decoder: Decoder) throws {
+        let container =  try decoder.container(keyedBy: ResultKey.self)
+        actorsList = try container.decodeIfPresent([Actor?].self, forKey: .results)!
         
-        networkDelegate.getActorDelegate = self
+    }
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ResultKey.self)
+        try container.encode(actorsList, forKey: .results)
     }
     
     func requestActorList (urlStr: String, page: Int, completion: @escaping (_ result: Bool) -> ()){
@@ -30,38 +41,15 @@ class HomeModel: GetActorsDelegate,HomeModelProtocol {
   
     func receivingData(data: Data?) {
         if data != nil {
-            do {
-                let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
-                         print("dic resposne \(dic!)")
-                if dic != nil {
-                    let results = dic?["results"] as? [NSDictionary]
-                    
-                    if (results != nil){
-                        for result in results!{
-                            let person = Actor()
-                            person.initWithDictionary(dict: result)
-                            let works = result["known_for"] as? [NSDictionary]
-                            
-                            for work in works ?? [] {
-                                let w = ActorDetails()
-                                w.initWithDictionary(dict: work)
-                                person.knowFor.append(w)
-                            }
-                           self.actorsList.append(person)
-                        }
-                        let receivedActor = HomeModel()
-                        receivedActor.actorsList = self.actorsList
-                         self.listReceived?(true)
-                    }else {
-                       self.listReceived?(false)
-                    }
-                }
-            }
-                
-            catch {
-                print("json error \(error)")
-            }
-        }else {
+        do {
+            let result = try JSONDecoder().decode(HomeModel.self, from: data!)
+            self.actorsList = result.actorsList
+           self.listReceived?(true)
+        } catch {
+             print("json error \(error)")
+        }
+      }
+        else {
            self.listReceived?(false)
         }
        
@@ -82,3 +70,4 @@ func returnArrayCount() -> Int {
         actorsList = []
     }
 }
+

@@ -7,12 +7,15 @@ target 'TheMovieDb' do
 
   # Pods for TheMovieDb
 pod 'SDWebImage', '~> 5.0'
+pod 'Alamofire', '~> 4.1'
+pod 'Moya', '~> 13.0'
+pod 'ObjectMapper', '~> 3.4'
   target 'TheMovieDbTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'TheMovieDbUITests' do
+  target 'TheMovieDbHomeUITests' do
     inherit! :search_paths
     # Pods for testing
   pod 'SDWebImage', '~> 5.0'

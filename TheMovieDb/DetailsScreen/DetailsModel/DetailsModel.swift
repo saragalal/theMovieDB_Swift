@@ -16,6 +16,13 @@ class DetailsModel: Actor, GetAllActorImages, DetailsModelProtocol{
        super.init(actor: actor)
         network.getAllImages = self
       }
+    
+    required init(from decoder: Decoder) throws {
+       let container = try decoder.container(keyedBy: CodingKeys.self)
+       let superDecoder = try container.superDecoder()
+        try super.init(from: superDecoder)
+        network.getAllImages = self
+    }
     func getActorId() -> Int {
         if let actorId = self.id {
             return actorId
