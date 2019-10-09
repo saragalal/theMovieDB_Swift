@@ -46,16 +46,15 @@ class Network {
 //    }
     func getData(urlString : String , page_no: Int){
         let urlStr :String  = urlString+"&page="+"\(page_no)"
-        Alamofire.request(urlStr, method: .get).responseJSON
+        Alamofire.request(urlStr, method: .get).responseData
             {  response in
                 //printing response
                 print(response)
                 switch (response.result){
                 case .success(_):
                     print("success")
-                    if response.result.value != nil {
-                        let receivedData = response.data
-                         self.getActorDelegate!.receivingData(data: receivedData)
+                    if let result = response.result.value {
+                         self.getActorDelegate!.receivingData(data: result)
                     }
                  case .failure(_):
                     print("fail")
