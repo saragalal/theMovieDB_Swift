@@ -21,6 +21,7 @@
 		84F274E6231B1A8A0090EFA8 /* Details_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */; };
 		84F274E8231B23F00090EFA8 /* SavePhotoViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F274E7231B23F00090EFA8 /* SavePhotoViewContoller.swift */; };
 		9208F095234DE247006BF48F /* ImagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208F094234DE247006BF48F /* ImagesResponse.swift */; };
+		9208F097234DEB26006BF48F /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208F096234DEB26006BF48F /* MoyaService.swift */; };
 		923921192327980B008D6ECD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921182327980B008D6ECD /* HomeViewController.swift */; };
 		9239211C23279F4F008D6ECD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211B23279F4F008D6ECD /* Network.swift */; };
 		923921222327A86A008D6ECD /* GetActorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921202327A86A008D6ECD /* GetActorsDelegate.swift */; };
@@ -96,6 +97,7 @@
 		84F274E5231B1A8A0090EFA8 /* Details_Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details_Storyboard.storyboard; sourceTree = "<group>"; };
 		84F274E7231B23F00090EFA8 /* SavePhotoViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoViewContoller.swift; sourceTree = "<group>"; };
 		9208F094234DE247006BF48F /* ImagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResponse.swift; sourceTree = "<group>"; };
+		9208F096234DEB26006BF48F /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
 		923921182327980B008D6ECD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9239211B23279F4F008D6ECD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		923921202327A86A008D6ECD /* GetActorsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActorsDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				923921202327A86A008D6ECD /* GetActorsDelegate.swift */,
 				9239211B23279F4F008D6ECD /* Network.swift */,
+				9208F096234DEB26006BF48F /* MoyaService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				9208F095234DE247006BF48F /* ImagesResponse.swift in Sources */,
 				924A4C99232E782F000BFFF4 /* HomePresenter.swift in Sources */,
 				92A97C632330BDBE00176B81 /* DetailsViewProtocol.swift in Sources */,
+				9208F097234DEB26006BF48F /* MoyaService.swift in Sources */,
 				9239211C23279F4F008D6ECD /* Network.swift in Sources */,
 				924A4CA7232E7A7A000BFFF4 /* ActorDetails.swift in Sources */,
 				8433BD0E2317F52000A52CBB /* ViewController.swift in Sources */,

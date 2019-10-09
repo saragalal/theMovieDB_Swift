@@ -7,9 +7,9 @@
 //
 
 import Foundation
-
+import ObjectMapper
 class DetailsModel: Actor, GetAllActorImages, DetailsModelProtocol{
-    var imageArray = [String]()
+    var imageArray = [ImagePath]()
     var getImageUrls: ((Bool) -> ())?
     
     override init(actor: Actor) {
@@ -30,36 +30,31 @@ class DetailsModel: Actor, GetAllActorImages, DetailsModelProtocol{
         return 0 
     }
     
-    func requestAllImage(imgUrl: String ,id: Int ,completion: @escaping (_ sucess: Bool) -> () ){
-            network.getActorImages(urlString: imgUrl, id: id)
+    func requestAllImage(id: Int ,completion: @escaping (_ sucess: Bool) -> () ){
+            network.getActorImages(id: id)
             getImageUrls = completion
         }
         
-        func imgurlReceived(data: Data?) {
+        func imgurlReceived(data: String?) {
+            if let jsondata = data {
             do{
-                let dic = try JSONSerialization.jsonObject(with: data! , options: []) as? NSDictionary
-                
-                let results = dic?["profiles"] as? [NSDictionary]
-                if results != nil {
-                   
-                    for result in results! {
-                        let str = result["file_path"] as? String
-                        if str != nil {
-                            imageArray.append(str!)
-                        }
-                    }
-                    self.getImageUrls?(true)
+              
+                let imgsURL = Mapper<ImagesResponse>().map(JSONString: jsondata)
+                self.imageArray = imgsURL!.profiles
+                 self.getImageUrls?(true)
                 }
-            } catch {
-                print("json error \(error)")
-            }
-        }
-    
+        }else {
+            self.getImageUrls?(false)
+      }
+    }
     func getCount() -> Int {
         return imageArray.count
     }
     func getImageURL(index: Int) -> String{
-        return imageArray[index]
+        if let imgUrl = imageArray[index].profilePath {
+        return imgUrl
+        }
+        return ""
     }
     func getActor() -> DetailsModel? {
         return self
@@ -68,6 +63,9 @@ class DetailsModel: Actor, GetAllActorImages, DetailsModelProtocol{
         return self.profile_path
     }
     func returnImagePath(at cell: Int) -> String? {
-        return self.imageArray[cell]
+        if let imgUrl = self.imageArray[cell].profilePath {
+            return imgUrl
+        }
+        return ""
     }
 }

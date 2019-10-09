@@ -20,7 +20,7 @@ protocol GetImageDelegate {
 }
 
 protocol GetAllActorImages {
-    func imgurlReceived (data: Data?)
+    func imgurlReceived (data: String?)
     
 }
 

@@ -21,7 +21,7 @@ class DetailsPresenterImplementation: DetailsPresenterProtocol {
     }
     func detailsInit() {
      if detailsModel?.getActorId() != 0 ,detailsModel?.getActorId() != nil{
-        detailsModel?.requestAllImage(imgUrl: imgsbaseUrl, id: (detailsModel?.getActorId())!, completion:{ result in
+        detailsModel?.requestAllImage(id: (detailsModel?.getActorId())!, completion:{ result in
                 if result {
                     self.detailsView?.updateCollectionView()
                 }

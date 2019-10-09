@@ -80,8 +80,5 @@ class DetailsViewController: UIViewController , UICollectionViewDelegate, UIColl
     }
     func navigateToPhotoScreen(photoView: SavePhotoViewContoller){
         self.navigationController?.pushViewController(photoView, animated: true)
-    }
-
-  
-    
+    }    
 }

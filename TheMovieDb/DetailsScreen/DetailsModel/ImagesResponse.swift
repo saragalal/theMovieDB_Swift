@@ -7,8 +7,22 @@
 //
 
 import Foundation
-struct ImagesResponse {
-    var allImages = [String]()
-    
+import ObjectMapper
+struct ImagesResponse: Mappable {
+    var profiles = [ImagePath]()
+    init?(map: Map) {
+        
+    }
+    mutating func mapping(map: Map) {
+         profiles    <- map["profiles"]
+    }
 }
-
+struct ImagePath: Mappable {
+    var profilePath: String?
+    init?(map: Map) {
+        
+    }
+    mutating func mapping(map: Map) {
+        profilePath    <- map["file_path"]
+    }
+}

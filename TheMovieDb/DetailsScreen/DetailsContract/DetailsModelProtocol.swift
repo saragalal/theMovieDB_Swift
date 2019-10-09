@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DetailsModelProtocol {
-    func requestAllImage(imgUrl: String ,id: Int ,completion: @escaping (_ sucess: Bool) -> ())
+    func requestAllImage(id: Int ,completion: @escaping (_ sucess: Bool) -> ())
     func getActorId() -> Int
     func getCount() -> Int
     func getImageURL(index: Int) -> String
