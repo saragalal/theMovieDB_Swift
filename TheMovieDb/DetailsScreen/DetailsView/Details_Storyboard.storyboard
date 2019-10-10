@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0dS-ST-hYA">
-                                <rect key="frame" x="0.0" y="32" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0dS-ST-hYA">
+                                <rect key="frame" x="0.0" y="32" width="375" height="635"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ehz-vL-439">
                                     <size key="itemSize" width="113" height="95"/>
@@ -142,6 +141,12 @@
                         <accessibility key="accessibilityConfiguration" identifier="DetailsViewIdentifier">
                             <bool key="isElement" value="YES"/>
                         </accessibility>
+                        <constraints>
+                            <constraint firstItem="H6Y-h3-QNN" firstAttribute="trailing" secondItem="0dS-ST-hYA" secondAttribute="trailing" id="59N-W7-B8X"/>
+                            <constraint firstItem="0dS-ST-hYA" firstAttribute="leading" secondItem="H6Y-h3-QNN" secondAttribute="leading" id="Etc-EX-O9m"/>
+                            <constraint firstItem="H6Y-h3-QNN" firstAttribute="top" secondItem="0dS-ST-hYA" secondAttribute="top" constant="32" id="P3B-Ag-5cy"/>
+                            <constraint firstItem="H6Y-h3-QNN" firstAttribute="bottom" secondItem="0dS-ST-hYA" secondAttribute="bottom" id="zxR-3e-0PG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="H6Y-h3-QNN"/>
                     </view>
                     <navigationItem key="navigationItem" title="DETAILS" id="x7L-12-w7f">

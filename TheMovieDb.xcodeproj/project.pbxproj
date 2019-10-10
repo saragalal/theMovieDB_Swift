@@ -22,6 +22,7 @@
 		84F274E8231B23F00090EFA8 /* SavePhotoViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F274E7231B23F00090EFA8 /* SavePhotoViewContoller.swift */; };
 		9208F095234DE247006BF48F /* ImagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208F094234DE247006BF48F /* ImagesResponse.swift */; };
 		9208F097234DEB26006BF48F /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208F096234DEB26006BF48F /* MoyaService.swift */; };
+		9208F09A234E1E68006BF48F /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208F099234E1E68006BF48F /* UploadViewController.swift */; };
 		923921192327980B008D6ECD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921182327980B008D6ECD /* HomeViewController.swift */; };
 		9239211C23279F4F008D6ECD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9239211B23279F4F008D6ECD /* Network.swift */; };
 		923921222327A86A008D6ECD /* GetActorsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923921202327A86A008D6ECD /* GetActorsDelegate.swift */; };
@@ -98,6 +99,7 @@
 		84F274E7231B23F00090EFA8 /* SavePhotoViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoViewContoller.swift; sourceTree = "<group>"; };
 		9208F094234DE247006BF48F /* ImagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResponse.swift; sourceTree = "<group>"; };
 		9208F096234DEB26006BF48F /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
+		9208F099234E1E68006BF48F /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		923921182327980B008D6ECD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9239211B23279F4F008D6ECD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		923921202327A86A008D6ECD /* GetActorsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetActorsDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		8433BD0A2317F51F00A52CBB /* TheMovieDb */ = {
 			isa = PBXGroup;
 			children = (
+				9208F098234E1E50006BF48F /* UploadScreen */,
 				92A0BD6E2332150B0095AC5B /* SavePhotoScreen */,
 				9239211A23279F27008D6ECD /* Network */,
 				92FC255E231E763B0019A3E9 /* Utilites */,
@@ -259,6 +262,14 @@
 				92A97C612330BD8A00176B81 /* DetailsContract */,
 			);
 			path = DetailsScreen;
+			sourceTree = "<group>";
+		};
+		9208F098234E1E50006BF48F /* UploadScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9208F099234E1E68006BF48F /* UploadViewController.swift */,
+			);
+			path = UploadScreen;
 			sourceTree = "<group>";
 		};
 		9239211A23279F27008D6ECD /* Network */ = {
@@ -711,6 +722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				924A4C9D232E7871000BFFF4 /* HomeModelProtocol.swift in Sources */,
+				9208F09A234E1E68006BF48F /* UploadViewController.swift in Sources */,
 				92A0BD7E233216410095AC5B /* SavePhotoPresenterProtocol.swift in Sources */,
 				92BC7FB32328CEB100C15EDD /* DetailsCollectionReusableView.swift in Sources */,
 				924A4CA5232E7A59000BFFF4 /* Actor.swift in Sources */,
