@@ -42,6 +42,7 @@
 		92A0BD742332155A0095AC5B /* SavePhotoViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A0BD732332155A0095AC5B /* SavePhotoViewProtocol.swift */; };
 		92A0BD7C233216200095AC5B /* SavePhotoModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A0BD7B233216200095AC5B /* SavePhotoModelProtocol.swift */; };
 		92A0BD7E233216410095AC5B /* SavePhotoPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A0BD7D233216410095AC5B /* SavePhotoPresenterProtocol.swift */; };
+		92A428FD234F2BF70044E896 /* OAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A428FC234F2BF70044E896 /* OAuthHelper.swift */; };
 		92A97C602330BD2100176B81 /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A97C5F2330BD2100176B81 /* DetailsModel.swift */; };
 		92A97C632330BDBE00176B81 /* DetailsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A97C622330BDBE00176B81 /* DetailsViewProtocol.swift */; };
 		92A97C652330BDD400176B81 /* DetailsModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A97C642330BDD400176B81 /* DetailsModelProtocol.swift */; };
@@ -119,6 +120,7 @@
 		92A0BD732332155A0095AC5B /* SavePhotoViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoViewProtocol.swift; sourceTree = "<group>"; };
 		92A0BD7B233216200095AC5B /* SavePhotoModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoModelProtocol.swift; sourceTree = "<group>"; };
 		92A0BD7D233216410095AC5B /* SavePhotoPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoPresenterProtocol.swift; sourceTree = "<group>"; };
+		92A428FC234F2BF70044E896 /* OAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthHelper.swift; sourceTree = "<group>"; };
 		92A97C5F2330BD2100176B81 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
 		92A97C622330BDBE00176B81 /* DetailsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewProtocol.swift; sourceTree = "<group>"; };
 		92A97C642330BDD400176B81 /* DetailsModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModelProtocol.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				92FC2561231E7FB40019A3E9 /* CALayer+extensions.swift */,
+				92A428FC234F2BF70044E896 /* OAuthHelper.swift */,
 			);
 			path = Utilites;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				92E9D31B232FA0880081C71A /* HomeCellPresenterImplementation.swift in Sources */,
 				84CEFA03231939F000AF5C4C /* HomeTableViewCell.swift in Sources */,
 				9208F095234DE247006BF48F /* ImagesResponse.swift in Sources */,
+				92A428FD234F2BF70044E896 /* OAuthHelper.swift in Sources */,
 				924A4C99232E782F000BFFF4 /* HomePresenter.swift in Sources */,
 				92A97C632330BDBE00176B81 /* DetailsViewProtocol.swift in Sources */,
 				9208F097234DEB26006BF48F /* MoyaService.swift in Sources */,

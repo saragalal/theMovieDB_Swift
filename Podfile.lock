@@ -5,6 +5,7 @@ PODS:
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
+  - OAuthSwift (2.0.0)
   - ObjectMapper (3.5.1)
   - Result (4.1.0)
   - SDWebImage (5.1.1):
@@ -14,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.1)
   - Moya (~> 13.0)
+  - OAuthSwift (~> 2.0.0)
   - ObjectMapper (~> 3.4)
   - SDWebImage (~> 5.0)
 
@@ -23,16 +25,18 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Moya
+    - OAuthSwift
     - ObjectMapper
     - Result
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  OAuthSwift: 6805456763cf1c7ae0c16765257ed430b7aacae7
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
 
-PODFILE CHECKSUM: 191d3ef46954b54c702dcad2cde7ecb77ea9a921
+PODFILE CHECKSUM: 1b8e79d74684b98df3b45a48594378f1f76d8d42
 
 COCOAPODS: 1.8.3

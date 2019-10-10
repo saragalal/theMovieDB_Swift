@@ -10,6 +10,7 @@ pod 'SDWebImage', '~> 5.0'
 pod 'Alamofire', '~> 4.1'
 pod 'Moya', '~> 13.0'
 pod 'ObjectMapper', '~> 3.4'
+pod 'OAuthSwift', '~> 2.0.0'
   target 'TheMovieDbTests' do
     inherit! :search_paths
     # Pods for testing
