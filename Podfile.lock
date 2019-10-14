@@ -11,6 +11,8 @@ PODS:
   - SDWebImage (5.1.1):
     - SDWebImage/Core (= 5.1.1)
   - SDWebImage/Core (5.1.1)
+  - SwiftyXMLParser (5.1.0)
+  - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.1)
@@ -18,6 +20,8 @@ DEPENDENCIES:
   - OAuthSwift (~> 2.0.0)
   - ObjectMapper (~> 3.4)
   - SDWebImage (~> 5.0)
+  - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
+  - SWXMLHash (~> 5.0.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -28,6 +32,16 @@ SPEC REPOS:
     - OAuthSwift
     - ObjectMapper
     - Result
+    - SWXMLHash
+
+EXTERNAL SOURCES:
+  SwiftyXMLParser:
+    :git: https://github.com/yahoojapan/SwiftyXMLParser.git
+
+CHECKOUT OPTIONS:
+  SwiftyXMLParser:
+    :commit: bc85162ecee60d6eb94b778648bc4c51e1c4d34f
+    :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
@@ -36,7 +50,9 @@ SPEC CHECKSUMS:
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
+  SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: 1b8e79d74684b98df3b45a48594378f1f76d8d42
+PODFILE CHECKSUM: 67396a205173ec76e012b08a3a9d687f6664605d
 
 COCOAPODS: 1.8.3

@@ -130,10 +130,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eix-FK-Lii">
-                                <rect key="frame" x="16" y="85" width="343" height="424"/>
+                                <rect key="frame" x="16" y="85" width="343" height="467"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nc7-PQ-m3r">
-                                <rect key="frame" x="100" y="559" width="175" height="34"/>
+                                <rect key="frame" x="100" y="567" width="175" height="41"/>
                                 <color key="backgroundColor" red="0.2901960784" green="0.73725490199999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Upload Image">
@@ -146,13 +146,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="H7m-nw-qix" firstAttribute="bottom" secondItem="Nc7-PQ-m3r" secondAttribute="bottom" constant="25" id="4fk-Uo-m0t"/>
                             <constraint firstItem="Nc7-PQ-m3r" firstAttribute="leading" secondItem="H7m-nw-qix" secondAttribute="leading" constant="100" id="5J5-2S-1h7"/>
                             <constraint firstItem="Eix-FK-Lii" firstAttribute="top" secondItem="H7m-nw-qix" secondAttribute="top" constant="21" id="McZ-fT-bw1"/>
                             <constraint firstItem="Eix-FK-Lii" firstAttribute="leading" secondItem="H7m-nw-qix" secondAttribute="leading" constant="16" id="OAG-xM-51J"/>
                             <constraint firstItem="H7m-nw-qix" firstAttribute="trailing" secondItem="Eix-FK-Lii" secondAttribute="trailing" constant="16" id="TMY-u6-LQh"/>
                             <constraint firstItem="H7m-nw-qix" firstAttribute="trailing" secondItem="Nc7-PQ-m3r" secondAttribute="trailing" constant="100" id="bHg-bl-uPh"/>
-                            <constraint firstItem="Nc7-PQ-m3r" firstAttribute="top" secondItem="Eix-FK-Lii" secondAttribute="bottom" constant="50" id="gtA-a2-PWU"/>
+                            <constraint firstItem="Eix-FK-Lii" firstAttribute="height" secondItem="XCL-cf-idw" secondAttribute="height" multiplier="0.7" id="gcE-hW-Wj4"/>
+                            <constraint firstItem="Nc7-PQ-m3r" firstAttribute="top" secondItem="Eix-FK-Lii" secondAttribute="bottom" constant="15" id="gtA-a2-PWU"/>
+                            <constraint firstItem="H7m-nw-qix" firstAttribute="bottom" secondItem="Nc7-PQ-m3r" secondAttribute="bottom" constant="10" id="lE3-tq-6ys"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H7m-nw-qix"/>
                     </view>
@@ -188,6 +189,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="0Qp-Gw-wAF"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mqN-My-22v">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.30980392159999998" green="0.60392156860000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="barTintColor" red="0.2901960784" green="0.73725490199999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
